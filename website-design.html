@@ -203,6 +203,19 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 .vs .bad{background:var(--alt)}
 .vs .good{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),var(--shadow)}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.big{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);margin-bottom:14px;box-shadow:var(--shadow)}
+.big>div{padding:26px 28px}
+.big .from{background:var(--alt)}
+.big .to{background:var(--blue);color:#fff}
+.big .to h3,.big .to p{color:#fff}
+.big .lbl{font:700 12px/1 var(--b);letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.big h3{font-size:24px;line-height:1.2;margin-bottom:8px}
+.big p{font-size:15px}
+.fx .card h3{display:flex;gap:8px;align-items:baseline}
+.fx .card h3 span{font:700 12px var(--b);color:var(--ok);background:var(--ok-050);border-radius:999px;padding:4px 8px;white-space:nowrap}
+.alt{margin-top:14px;display:flex;gap:14px;align-items:flex-start;background:var(--amber-050);border-radius:14px;padding:16px 18px;font-size:14.5px;color:var(--ink)}
+.alt b{font-family:var(--h);white-space:nowrap}
+@media (max-width:700px){.big{grid-template-columns:1fr}.alt{flex-direction:column;gap:4px}}
 @media (max-width:900px){.why,.vs{grid-template-columns:1fr}}
 @media (min-width:901px){.bubble{left:auto;right:-20px;top:-40px}}
 </style>
@@ -261,7 +274,26 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">03 &middot; Heavy, but not slow</p><h2>Rich design, kept smooth and accessible</h2><p class="sub">Heavy design only works if it still feels fast. These are built in.</p></div>
+    <div class="head"><p class="eyebrow">03 &middot; Why I chose this</p><h2>What this format should do for us</h2><p class="sub">I chose it for how it makes owners feel, not only for what it shows.</p></div>
+    <div class="big">
+      <div class="from"><p class="lbl">What owners usually think</p><h3>"ERP is a heavy discussion."</h3><p>Long, expensive, complicated. A big decision for later, with a long meeting full of jargon.</p></div>
+      <div class="to"><p class="lbl">What this site makes them think</p><h3>"Oh, that looks simple."</h3><p>Nexi, light colours and Odoo working in seconds make ERP feel friendly and easy. A 30-minute chat, not a heavy project talk.</p></div>
+    </div>
+    <div class="cards c3 fx">
+      <div class="card"><h3>More first calls <span>expected</span></h3><p>When ERP doesn't feel heavy, booking a 30-minute call feels small and safe to say yes to.</p></div>
+      <div class="card"><h3>They stay longer <span>expected</span></h3><p>Moving scenes and demos keep people exploring instead of leaving after one screen.</p></div>
+      <div class="card"><h3>Better calls <span>expected</span></h3><p>Visitors already understand the idea, so calls start at "how do we do this?", not "what is ERP?".</p></div>
+      <div class="card"><h3>They remember us <span>expected</span></h3><p>Nexi is ours alone. People who see her in ads and posts recognise TechNext on the site.</p></div>
+      <div class="card"><h3>We look established <span>expected</span></h3><p>A polished, working site signals real capability while our case studies are still being built.</p></div>
+      <div class="card"><h3>Owners, not only IT <span>expected</span></h3><p>Pictures over specs and no jargon, so non-technical owners and managers follow along.</p></div>
+    </div>
+    <div class="alt"><b>With a normal format</b><span>A text-heavy site keeps ERP feeling heavy. Owners postpone the talk, and we compete on price with every other partner.</span></div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">04 &middot; Heavy, but not slow</p><h2>Rich design, kept smooth and accessible</h2><p class="sub">Heavy design only works if it still feels fast. These are built in.</p></div>
     <div class="cards c4">
       <div class="card"><h3>About half the GPU load</h3><p>Hero animations went from ~40% GPU to ~20% after the performance pass, with no animation removed.</p></div>
       <div class="card"><h3>Lighter on phones</h3><p>Phones get a lite Nexi, only on her slides, and she pauses when out of view.</p></div>
@@ -273,7 +305,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">04 &middot; Found on Google and AI search</p><h2>Built to be found, not only seen</h2></div>
+    <div class="head"><p class="eyebrow">05 &middot; Found on Google and AI search</p><h2>Built to be found, not only seen</h2></div>
     <div class="rows">
       <div class="row"><b>106 pages in the sitemap</b><span>59 Odoo pages, 14 solutions, 8 industries, blog and offices, all with clean links.</span><span class="who">Google</span></div>
       <div class="row"><b>llms.txt</b><span>A plain summary file so ChatGPT, Claude and Perplexity can describe TechNext correctly.</span><span class="who">AI search</span></div>
@@ -285,7 +317,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">05 &middot; How it helps the plan</p><h2>The site and the marketing plan work as one</h2></div>
+    <div class="head"><p class="eyebrow">06 &middot; How it helps the plan</p><h2>The site and the marketing plan work as one</h2></div>
     <div class="flow">
       <div class="step"><span class="n">ADS</span><h3>Nexi in the feed</h3><p>People meet Nexi in the episodes and ads.</p></div>
       <div class="step"><span class="n">CLICK</span><h3>Same Nexi on the site</h3><p>They land and see the same character. Instant trust.</p></div>
@@ -297,7 +329,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">06 &middot; Honest trade-offs</p><h2>What it costs us, and how we handle it</h2></div>
+    <div class="head"><p class="eyebrow">07 &middot; Honest trade-offs</p><h2>What it costs us, and how we handle it</h2></div>
     <div class="cards c3">
       <div class="card"><h3>More to maintain</h3><p>A Python build generates the pages from one design system, so a change is made once.</p></div>
       <div class="card"><h3>A 4-second intro</h3><p>Good for first impressions, but speed tools count it. Shorten it if scores matter.</p></div>
