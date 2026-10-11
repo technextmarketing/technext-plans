@@ -295,6 +295,13 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 #atabs{max-width:100%;overflow-x:auto;scrollbar-width:thin}
 #atabs .mtab{flex:none}
 #cal-ads .calbar{flex-wrap:wrap}
+.mp-tag{display:none;font:700 11px/1 var(--b);font-style:normal;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+@media (max-width:700px){
+  .mplan{grid-template-columns:1fr;min-width:0;gap:6px}
+  .mp-h{display:none}
+  .mp-m{flex-direction:row;align-items:baseline;gap:8px;padding:14px 2px 2px}
+  .mp-tag{display:block}
+}
 .mplan{display:grid;grid-template-columns:90px minmax(260px,1fr) minmax(260px,1fr);gap:8px;min-width:640px}
 .mp-h{font:700 12px/1 var(--b);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 4px}
 .mp-m{display:flex;flex-direction:column;justify-content:center;padding:8px 4px}
@@ -768,7 +775,7 @@ var ADTH={"technext-fb-ad1-odoo-erp-make-it-one-4x5.png":"/9j/4AAQSkZJRgABAQAAAQ
     g+='<div class="mp-m"><b>'+MON[d.getMonth()]+'</b><small>'+d.getFullYear()+'</small></div>';
     ["a1","a2"].forEach(function(a){var f=FL.filter(function(x){return x.a===a&&x.from.slice(0,7)===m})[0];
       if(!f){g+='<div class="mp-c off">Starts 19 Oct</div>';return}
-      g+='<button class="mp-c" style="--c:'+CAMP[a].c+'" data-f="'+f.i+'"><img alt="" src="'+f.img+'"><span><small>'+short(f.from)+' &ndash; '+short(f.to)+' &middot; $'+flSpend(f)+'</small><b>'+esc(f.theme)+'</b><em>'+esc(f.head)+'</em></span></button>'});
+      g+='<button class="mp-c" style="--c:'+CAMP[a].c+'" data-f="'+f.i+'"><img alt="" src="'+f.img+'"><span><i class="mp-tag" style="color:'+CAMP[a].c+'">'+CAMP[a].n.split(" \u00b7 ")[1]+'</i><small>'+short(f.from)+' &ndash; '+short(f.to)+' &middot; $'+flSpend(f)+'</small><b>'+esc(f.theme)+'</b><em>'+esc(f.head)+'</em></span></button>'});
   });
   document.getElementById("mplan").innerHTML=g;
   // calendar
