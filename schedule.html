@@ -291,7 +291,24 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 .adinfo dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 14px;font-size:14px}
 .adinfo dt{color:var(--muted)}
 .adinfo dd{margin:0;color:var(--ink)}
-@media (max-width:900px){.adsum,.c2x{grid-template-columns:1fr}.adgal{grid-template-columns:repeat(3,1fr)}}
+.adsum.two{grid-template-columns:1fr 1fr}
+.mplan{display:grid;grid-template-columns:90px minmax(260px,1fr) minmax(260px,1fr);gap:8px;min-width:640px}
+.mp-h{font:700 12px/1 var(--b);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 4px}
+.mp-m{display:flex;flex-direction:column;justify-content:center;padding:8px 4px}
+.mp-m b{font:800 17px/1 var(--h);color:var(--ink)}
+.mp-m small{font:500 12px var(--b);color:var(--muted);margin-top:3px}
+.mp-c{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;text-align:left;padding:8px;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;background:var(--card);cursor:pointer;font:inherit;transition:border-color .15s ease,transform .15s ease}
+.mp-c:hover{transform:translateY(-1px);border-color:var(--c)}
+.mp-c img{width:52px;height:66px;object-fit:cover;border-radius:6px}
+.mp-c small{display:block;font:600 11.5px var(--b);color:var(--muted)}
+.mp-c b{display:block;font:800 14.5px/1.25 var(--h);color:var(--ink);margin-top:2px}
+.mp-c em{display:block;font-style:normal;font-size:13px;color:var(--body);margin-top:2px}
+.mp-c.off{display:flex;align-items:center;justify-content:center;cursor:default;color:var(--muted);font-size:13px;border-left-color:var(--line);background:transparent;border-style:dashed}
+.ab .nwb{display:inline-block;margin-top:0;color:var(--ink);font-size:9px;margin-right:5px;padding:1px 4px;border-radius:3px;background:#fff;color:var(--ink);font:800 9px/1.3 var(--b)}
+.legend2 b.nw{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.adgal .use{color:var(--ok);font-weight:600}.adgal .spare{color:var(--muted)}
+.sheet .pic img+img{margin-top:8px}
+@media (max-width:900px){.adsum,.adsum.two,.c2x{grid-template-columns:1fr}.adgal{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:760px){.abars{flex:1;min-width:0}.ab{font-size:11.5px;padding:7px 8px}}
 @media (max-width:900px){.times{grid-template-columns:1fr}}
 @media (max-width:760px){
@@ -370,32 +387,36 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s" id="cal-ads">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">03 &middot; Facebook paid ads calendar</p><h2>Which ads run, each day</h2><p class="sub">Three Facebook + Instagram campaigns on $1,000 a month, 13 Oct to 10 Jan. Planned, not launched yet: the Meta Pixel has to go on technext.asia first. Tap a bar for the campaign, today's creative and the ad copy.</p></div>
-    <div class="adsum">
-      <div class="as" style="--c:#3167CA"><b>Ad 1 &middot; Nexi Explains</b><span>$300 / mo &middot; ~$10 a day</span><small>Video views. Each new episode gets 7 days from its premiere.</small></div>
-      <div class="as" style="--c:#714B67"><b>Ad 2 &middot; Odoo discovery call</b><span>$450 / mo &middot; ~$15 a day</span><small>Booked calls from new people. From Mon 19 Oct.</small></div>
-      <div class="as" style="--c:#21B799"><b>Ad 3 &middot; Retarget</b><span>$250 / mo &middot; ~$8 a day</span><small>Booked calls from warm viewers. From ~Mon 2 Nov.</small></div>
+    <div class="head"><p class="eyebrow">03 &middot; Facebook paid ads calendar</p><h2>Two ads, a new one every month</h2><p class="sub">A long-term setup on $1,000 a month: one Nexi Explains ad and one Odoo ad on Facebook + Instagram, each swapped for a new direct ad on the 1st of the month. Planned, not launched yet: the Meta Pixel has to go on technext.asia first.</p></div>
+    <div class="adsum two">
+      <div class="as" style="--c:#3167CA"><b>Ad 1 &middot; Nexi Explains</b><span>$400 / mo &middot; ~$13 a day</span><small>Video views. Builds a warm audience of business owners who know Nexi. From Tue 13 Oct.</small></div>
+      <div class="as" style="--c:#714B67"><b>Ad 2 &middot; Odoo discovery call</b><span>$600 / mo &middot; ~$20 a day</span><small>Booked 30-min calls. Shown to new people and to Nexi viewers. From Mon 19 Oct.</small></div>
     </div>
+
+    <h3 style="font-size:17px;margin:6px 0 12px">The 12-month ad plan <span style="font:500 13.5px var(--b);color:var(--muted)">(tap a month for the full ad)</span></h3>
+    <div class="scroll"><div class="mplan" id="mplan"></div></div>
+
+    <h3 style="font-size:17px;margin:30px 0 12px">Day by day</h3>
     <div class="calbar">
       <div class="mtabs" id="atabs"></div>
       <div class="aspend" id="aspend"></div>
     </div>
     <div class="wk"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
     <div class="month" id="amonth"></div>
-    <div class="legend2"><span><i class="lg" style="background:#3167CA"></i>Ad 1 Nexi Explains (episode codes live that day)</span><span><i class="lg" style="background:#714B67"></i>Ad 2 Odoo cold</span><span><i class="lg" style="background:#21B799"></i>Ad 3 Retarget</span><span><b class="h">&frac12;</b>half budget, offices closed</span></div>
+    <div class="legend2"><span><i class="lg" style="background:#3167CA"></i>Ad 1 Nexi Explains</span><span><i class="lg" style="background:#714B67"></i>Ad 2 Odoo</span><span><b class="nw">NEW</b>new ad goes live</span><span><b class="h">&frac12;</b>half budget, offices closed</span></div>
 
     <div class="cards c2x" style="margin-top:22px">
       <div class="card"><h3>Before launch</h3><ul class="chk">
         <li>Install the Meta Pixel on technext.asia through Tag Manager <em>(missing)</em></li>
         <li>Fire a booked-call event on the booking confirmation (technext.odoo.com)</li>
-        <li>Upload each episode to the Facebook Page before its premiere</li>
-        <li>Create audiences: Nexi 50%+ viewers, engagers, site visitors, plus exclusions</li>
-        <li>Tag links: utm_campaign = nexi-s1 / odoo-cold / odoo-retarget</li></ul></div>
-      <div class="card"><h3>One decision to make</h3><p>Season 1 now ends on Thu 3 Dec, so Ad 1 runs out of new episodes on 9 Dec. Quick Tips stay organic in the plan. Choose: move Ad 1's December budget to Retarget, or keep the best-performing episode running.</p>
-        <h3 style="margin-top:16px">Rules</h3><p>One change per ad set per week. Each episode gets 7 days, then stops. Reply to every booking the same working day.</p></div>
+        <li>Upload each month's video to the Facebook Page before it runs</li>
+        <li>Create audiences: new people (interests) + Nexi 50%+ viewers and site visitors in the same Odoo ad set; exclude customers and recent bookings</li>
+        <li>Tag links: utm_campaign = nexi-explains / odoo-call, utm_content = the month</li></ul></div>
+      <div class="card"><h3>Long term, refreshed monthly</h3><p>The two ads run with no end date. Each month gets one new direct ad: name the problem, make one promise, give one button. No discounts, client claims or "free". Check the numbers monthly, review every quarter.</p>
+        <h3 style="margin-top:16px">Rules</h3><p>Swap ads on the 1st of the month only. No other edits mid-month, so Meta keeps learning. Reply to every booking the same working day.</p></div>
     </div>
 
-    <h3 style="font-size:17px;margin:28px 0 12px">Ready ad creatives (4:5)</h3>
+    <h3 style="font-size:17px;margin:28px 0 12px">Ad creatives in the drive (4:5)</h3>
     <div class="adgal" id="adgal"></div>
   </div>
 </section>
@@ -645,11 +666,10 @@ var NTH={"00-technext-nexi-explains-s1-ep00-meet-nexi.png":"/9j/4AAQSkZJRgABAQAA
     ["2026-10-11",null,"content","Social posts start","Two a day on Facebook, Instagram and LinkedIn. Week 1 introduces TechNext, Nexi and Odoo."],
     ["2026-10-12",null,"nexi","First Nexi poster + TikTok","EP00 Meet Nexi, the day before its premiere."],
     ["2026-10-13",null,"nexi","EP00 premieres on YouTube","6 PM. Season 1 then runs Tue, Thu and Sat."],
-    ["2026-10-13",null,"ads","Ad 1 starts: Nexi Explains","$300 a month. Each new episode gets 7 days of spend."],
-    ["2026-10-19",null,"ads","Ad 2 starts: Odoo discovery call","$450 a month, to new people. Needs the Meta Pixel first."],
+    ["2026-10-13",null,"ads","Ad 1 starts: Nexi Explains","$400 a month, long term. One general Nexi ad, swapped for a new one every month."],
+    ["2026-10-19",null,"ads","Ad 2 starts: Odoo discovery call","$600 a month, long term. New people and Nexi viewers. Needs the Meta Pixel first."],
     ["2026-10-24",null,"holiday","Halloween social posts begin","Four posts to 31 Oct, Facebook + Instagram only."],
     ["2026-10-26",null,"holiday","Halloween special premieres","The Haunted Office, 6 PM. YouTube premiere still to set up."],
-    ["2026-11-02",null,"ads","Ad 3 starts: Retarget","$250 a month, once 1,000+ people have watched half an episode."],
     ["2026-12-03",null,"nexi","EP22 Season 1 finale","Recap of Season 1 and a Season 2 preview."],
     ["2026-12-04","2026-12-17","nexi","Quick Tips, every day","14 Quick Tips, 6 PM daily, each with a TikTok and a poster."],
     ["2026-12-20",null,"holiday","Christmas special premieres","The Christmas Rush, 6 PM. YouTube premiere still to set up."],
@@ -657,7 +677,7 @@ var NTH={"00-technext-nexi-explains-s1-ep00-meet-nexi.png":"/9j/4AAQSkZJRgABAQAA
     ["2026-12-26",null,"holiday","Year-end special premieres","The Countdown, 6 PM. YouTube premiere still to set up."],
     ["2027-01-03",null,"content","Last regular social post","169 posts done."],
     ["2027-01-08",null,"content","Last holiday post","New Year posts end."],
-    ["2027-01-11",null,"review","Quarter review","Keep, change or stop the ads. Goal: one signed Odoo client."]
+    ["2027-01-11",null,"review","Quarter review","Check results and adjust the two ads. Goal: one signed Odoo client."]
   ];
   var CAT={content:"Social",nexi:"Nexi",ads:"Paid ads",holiday:"Holiday",review:"Review"};
   document.getElementById("kd").innerHTML=KD.map(function(k){
@@ -677,6 +697,7 @@ var NTH={"00-technext-nexi-explains-s1-ep00-meet-nexi.png":"/9j/4AAQSkZJRgABAQAA
       <h3 id="amTitle"></h3>
       <dl id="amDl"></dl>
       <div class="cap" id="amCap"></div>
+      <button class="copy" id="amCopy">Copy ad copy</button>
     </div>
   </div>
 </div>
@@ -687,32 +708,68 @@ var ADTH={"technext-fb-ad1-odoo-erp-make-it-one-4x5.png":"/9j/4AAQSkZJRgABAQAAAQ
   var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],DN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   function pad(n){return n<10?"0"+n:""+n}
   function key(dt){return dt.getFullYear()+"-"+pad(dt.getMonth()+1)+"-"+pad(dt.getDate())}
-  function addDays(k,n){var d=new Date(k+"T00:00:00");d.setDate(d.getDate()+n);return key(d)}
   function nice(k){var d=new Date(k+"T00:00:00");return DN[d.getDay()]+" "+d.getDate()+" "+MON[d.getMonth()]}
-  var START="2026-10-13",END="2027-01-10",HALF0="2026-12-21",HALF1="2027-01-03",REVIEW="2027-01-11";
-  var eps=NEXI.filter(function(x){return /^EP/.test(x.code)});
+  function short(k){var d=new Date(k+"T00:00:00");return d.getDate()+" "+MON[d.getMonth()]}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  var HALF0="2026-12-21",HALF1="2027-01-03",REVIEWS=["2027-01-11","2027-04-05","2027-07-05"];
+  function nimg(code){for(var i=0;i<NEXI.length;i++)if(NEXI[i].code===code)return "data:image/jpeg;base64,"+NTH[NEXI[i].img];return ""}
+  function aimg(n){for(var f in ADTH)if(f.indexOf("fb-ad"+n+"-")>-1)return "data:image/jpeg;base64,"+ADTH[f];return ""}
   var CAMP={
-    a1:{n:"Ad 1 \u00b7 Nexi Explains",c:"#3167CA",day:10,start:START,obj:"Engagement \u2192 ThruPlay (video views)",aud:"Singapore, 25\u201360. Advantage+ audience: small business owners, entrepreneurship, accounting software, ERP.",
-        link:"technext.asia/nexi-explains",btn:"Watch more",head:"Nexi Explains: new episode",
-        copy:"Odoo, AI and tech, made simple. Meet Nexi, TechNext's AI companion, with a new episode every Tuesday, Thursday and Saturday at 6 PM."},
-    a2:{n:"Ad 2 \u00b7 Odoo discovery call",c:"#714B67",day:15,start:"2026-10-19",obj:"Leads \u2192 booked call (Pixel event)",aud:"Singapore, 28\u201360. Small business owners, Page admins. Interests: ERP, inventory management, accounting software, Xero, QuickBooks.",
-        link:"technext.asia/odoo/discovery, then its booking button",btn:"Book now",head:"Book a 30-min discovery call",
-        copy:"Same order, typed three times? In 30 minutes we map how your quotes, stock and invoices move today, and where Odoo stops the re-typing."},
-    a3:{n:"Ad 3 \u00b7 Retarget",c:"#21B799",day:8.33,start:"2026-11-02",obj:"Leads \u2192 booked call (Pixel event)",aud:"Watched 50%+ of any Nexi video (365 days), Page and Instagram engagers (90 days), site visitors (30 days).",
-        link:"Straight to the booking page",btn:"Book now",head:"Your Odoo discovery call",
-        copy:"Seen Nexi run Odoo? See it on your own business next. Book 30 minutes and we map where Odoo saves your team the most time."}
+    a1:{n:"Ad 1 \u00b7 Nexi Explains",c:"#3167CA",day:400/30,obj:"Engagement \u2192 ThruPlay (video views)",aud:"Singapore, 25\u201360. Advantage+: small business owners, entrepreneurship, accounting software, ERP.",link:"technext.asia/nexi-explains",btn:"Watch more"},
+    a2:{n:"Ad 2 \u00b7 Odoo discovery call",c:"#714B67",day:20,obj:"Leads \u2192 booked call (Pixel event)",aud:"Two audiences in one ad set: (1) Singapore 28\u201360, small business owners, interests ERP, inventory, accounting software, Xero, QuickBooks; (2) Nexi 50%+ viewers and site visitors. Excludes customers and anyone who booked in the last 180 days.",link:"technext.asia/odoo/discovery \u2192 booking button",btn:"Book now"}
   };
-  function a2creative(k){return k<"2026-11-23"?"EP03 Before vs After short + the Order-to-cash ad":"The better of those two + the Month-end close ad (weaker one swapped out)"}
+  // one ad per campaign per month, long term
+  var N=[
+    ["2026-10-13","2026-10-31","Meet Nexi","EP00","EP00 Meet Nexi short","Odoo, explained in 2 minutes","Odoo, AI and tech explained in 2 minutes, by a robot.\nNexi Explains: new episodes every Tue, Thu and Sat at 6 PM.\nStart with episode 1."],
+    ["2026-11-01","2026-11-30","One system for the whole business","EP08","EP08 Odoo Inventory short (EP07 Sales as a second cut)","Orders, stock, invoices. One system.","Still copying orders into three systems?\nWatch Nexi run sales, stock and invoices in one Odoo system. 2 minutes."],
+    ["2026-12-01","2026-12-31","Quick Tips: 2-minute Odoo fixes","TIP02","Quick Tip 02 Ctrl+K short","One Odoo shortcut a day","Using Odoo the slow way?\nOne Quick Tip a day, 4 to 17 Dec. Under 2 minutes each.\nWatch one now."],
+    ["2027-01-01","2027-01-31","Season 1, all in one place","EP22","EP22 Season 1 finale recap","All of Season 1 in one playlist","New year, one system.\n22 short episodes on Odoo, AI and tech. Watch the whole season."],
+    ["2027-02-01","2027-02-28","Accounting without the chase","EP06","EP06 Odoo Accounting short","Invoices that chase themselves","Still chasing payments by email?\nWatch Nexi send, match and follow up invoices in Odoo. 2 minutes."],
+    ["2027-03-01","2027-03-31","AI that does the busywork","EP13","EP13 Odoo + AI short","AI drafts it. You approve it.","Typing bills in by hand?\nWatch AI read a bill and draft it in Odoo while a person approves. 2 minutes."],
+    ["2027-04-01","2027-04-30","Never lose a deal","EP10","EP10 CRM Development short","Every lead, one pipeline","Deals going quiet in someone's inbox?\nWatch Nexi put every lead on one pipeline. 2 minutes."],
+    ["2027-05-01","2027-05-31","Automate the boring part","EP14","EP14 Workflow Automation short","Let the system do the routine","Same task, every day, by hand?\nWatch Nexi build a workflow that does it for you. 2 minutes."],
+    ["2027-06-01","2027-06-30","ERP is not just for big companies","EP04","EP04 Myth-busting short","ERP for a 10-person team?","Think ERP is only for big companies?\nNexi busts the myth in 2 minutes."],
+    ["2027-07-01","2027-07-31","Start with the tour","EP01","EP01 Odoo Walkthrough short","What is Odoo? 2-minute tour","Heard of Odoo but not sure what it does?\nFollow one order through every app with Nexi. 2 minutes."],
+    ["2027-08-01","2027-08-31","Stock that never runs out","EP09","EP09 Reordering Rules short","Reorder before the shelf is empty","Finding out you're out of stock when a customer asks?\nWatch Nexi set Odoo to reorder on time. 2 minutes."],
+    ["2027-09-01","2027-09-30","How an Odoo project works","EP05","EP05 Odoo ERP Implementation short","How Odoo goes live, step by step","Worried an ERP project drags on for months?\nSee how an Odoo project runs, from first call to go-live. 2 minutes."]
+  ];
+  var O=[
+    ["2026-10-19","2026-10-31","Stop re-typing orders",8,"Book a 30-min discovery call","Same order, typed three times?\nIn 30 minutes we map how your quotes, stock and invoices move today, and where Odoo stops the re-typing."],
+    ["2026-11-01","2026-11-30","Stock you can trust",1,"Know your stock. Book 30 minutes.","Sold an item you didn't have?\nIn 30 minutes we show where your stock count breaks, and how Odoo keeps one live number."],
+    ["2026-12-01","2026-12-31","Month-end in days",6,"Close the month in days, not weeks","Month-end taking a week?\nIn 30 minutes we walk through your close, and the steps Odoo can do for you."],
+    ["2027-01-01","2027-01-31","Start 2027 on one system",2,"Start 2027 on one system","Starting another year on spreadsheets?\nBook 30 minutes. We map your process first, then show what Odoo would change."],
+    ["2027-02-01","2027-02-28","AI for the paperwork",3,"Let AI draft. You approve.","Your team still types every bill and order?\nIn 30 minutes we show where AI in Odoo takes the typing off their desk."],
+    ["2027-03-01","2027-03-31","Software your team uses",7,"Training on your own data","Bought software nobody uses?\nWe train your team on your own data. Book 30 minutes to see how."],
+    ["2027-04-01","2027-04-30","Connect your shop and accounts",8,"Shop, stock and accounts, connected","Online shop, POS and accounts not talking?\nIn 30 minutes we map the gaps and how Odoo joins them."],
+    ["2027-05-01","2027-05-31","Support after go-live",9,"The team that sets it up, supports it","Stuck with a system nobody supports?\nBook 30 minutes with the team that implements and supports Odoo."],
+    ["2027-06-01","2027-06-30","Half the year on spreadsheets?",1,"Five spreadsheets? Make it one.","Half the year gone, still on five spreadsheets?\nBook 30 minutes and see them as one Odoo system."],
+    ["2027-07-01","2027-07-31","Quotes to cash, no gaps",2,"From quote to paid, one flow","Quotes in Word, orders in email, invoices in Excel?\nIn 30 minutes we map one flow from quote to payment."],
+    ["2027-08-01","2027-08-31","Ask us anything",4,"Ask us anything about Odoo","Still have Odoo questions?\nBook 30 minutes and ask us anything. No slides."],
+    ["2027-09-01","2027-09-30","Plan before year-end",6,"Go live before year-end","Want a new system before next year?\nBook 30 minutes now, so there's time to do it properly."]
+  ];
+  var ANM={"1":"Five spreadsheets? Make it one","2":"We map it first","3":"Your AI teammate","4":"Got an Odoo question? Ask Nexi","5":"Odoo, AI & tech, made simple","6":"Odoo ERP, implemented properly","7":"Training on your own data","8":"Nobody re-types between systems","9":"After go-live, the same team"};
+  var FL=[];
+  N.forEach(function(x){FL.push({a:"a1",from:x[0],to:x[1],theme:x[2],img:nimg(x[3]),cr:x[4],head:x[5],copy:x[6]})});
+  O.forEach(function(x){FL.push({a:"a2",from:x[0],to:x[1],theme:x[2],img:aimg(x[3]),ad:x[3],cr:"Ad "+x[3]+" \""+ANM[x[3]]+"\" (4:5 image)",head:x[4],copy:x[5]})});
+  FL.forEach(function(f,i){f.i=i});
   function dayInfo(k){
-    var half=k>=HALF0&&k<=HALF1,f=half?.5:1,r=[];
-    if(k<START||k>END)return {r:r,half:half,spend:0};
-    var live=eps.filter(function(e){return k>=e.prem&&k<=addDays(e.prem,6)});
-    if(live.length)r.push({id:"a1",label:live.map(function(e){return e.code}).join(" "),live:live,spend:CAMP.a1.day*f});
-    if(k>=CAMP.a2.start)r.push({id:"a2",label:"Odoo cold",spend:CAMP.a2.day*f});
-    if(k>=CAMP.a3.start)r.push({id:"a3",label:"Retarget",spend:CAMP.a3.day*f});
+    var half=k>=HALF0&&k<=HALF1,fr=half?.5:1;
+    var r=FL.filter(function(f){return k>=f.from&&k<=f.to}).map(function(f){return {f:f,spend:CAMP[f.a].day*fr,isNew:k===f.from}});
     return {r:r,half:half,spend:r.reduce(function(s,x){return s+x.spend},0)};
   }
-  var MONTHS=[[2026,9,"Oct"],[2026,10,"Nov"],[2026,11,"Dec"],[2027,0,"Jan"]];
+  function flSpend(f){var s=0,d=new Date(f.from+"T00:00:00"),e=new Date(f.to+"T00:00:00");while(d<=e){var k=key(d);s+=CAMP[f.a].day*(k>=HALF0&&k<=HALF1?.5:1);d.setDate(d.getDate()+1)}return Math.round(s)}
+  // monthly plan grid: one row per month, one column per ad
+  var MS=[];FL.forEach(function(f){var m=f.from.slice(0,7);if(MS.indexOf(m)<0)MS.push(m)});MS.sort();
+  var g='<div class="mp-h">Month</div><div class="mp-h" style="color:#3167CA">Ad 1 \u00b7 Nexi Explains</div><div class="mp-h" style="color:#714B67">Ad 2 \u00b7 Odoo</div>';
+  MS.forEach(function(m){var d=new Date(m+"-01T00:00:00");
+    g+='<div class="mp-m"><b>'+MON[d.getMonth()]+'</b><small>'+d.getFullYear()+'</small></div>';
+    ["a1","a2"].forEach(function(a){var f=FL.filter(function(x){return x.a===a&&x.from.slice(0,7)===m})[0];
+      if(!f){g+='<div class="mp-c off">Starts 19 Oct</div>';return}
+      g+='<button class="mp-c" style="--c:'+CAMP[a].c+'" data-f="'+f.i+'"><img alt="" src="'+f.img+'"><span><small>'+short(f.from)+' &ndash; '+short(f.to)+' &middot; $'+flSpend(f)+'</small><b>'+esc(f.theme)+'</b><em>'+esc(f.head)+'</em></span></button>'});
+  });
+  document.getElementById("mplan").innerHTML=g;
+  // calendar
+  var MONTHS=[[2026,9,"Oct"],[2026,10,"Nov"],[2026,11,"Dec"],[2027,0,"Jan"],[2027,1,"Feb"],[2027,2,"Mar"],[2027,3,"Apr"],[2027,4,"May"],[2027,5,"Jun"],[2027,6,"Jul"],[2027,7,"Aug"],[2027,8,"Sep"]];
   var now=new Date(),todayKey=key(now),mi=0;MONTHS.forEach(function(M,i){if(M[0]===now.getFullYear()&&M[1]===now.getMonth())mi=i});
   function monthSpend(M){var s=0,n=new Date(M[0],M[1]+1,0).getDate();for(var d=1;d<=n;d++)s+=dayInfo(key(new Date(M[0],M[1],d))).spend;return Math.round(s)}
   var at=document.getElementById("atabs");
@@ -721,42 +778,45 @@ var ADTH={"technext-fb-ad1-odoo-erp-make-it-one-4x5.png":"/9j/4AAQSkZJRgABAQAAAQ
   var total=MONTHS.reduce(function(s,M){return s+monthSpend(M)},0);
   function draw(){
     var M=MONTHS[mi],y=M[0],m=M[1],first=new Date(y,m,1),start=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate(),h="";
-    document.getElementById("aspend").innerHTML="Planned spend in "+M[2]+": $"+monthSpend(M)+"<span>13-week total: $"+total+"</span>";
+    document.getElementById("aspend").innerHTML="Planned spend in "+M[2]+": $"+monthSpend(M)+"<span>12-month total: $"+total+"</span>";
     for(var i=0;i<start;i++)h+='<div class="day out"></div>';
     for(var d=1;d<=days;d++){
-      var k=key(new Date(y,m,d)),inf=dayInfo(k),dt=new Date(y,m,d),rev=k===REVIEW;
+      var k=key(new Date(y,m,d)),inf=dayInfo(k),dt=new Date(y,m,d),rev=REVIEWS.indexOf(k)>-1;
       h+='<div class="day'+(inf.r.length||rev?"":" empty")+(k===todayKey?" today":"")+(rev?" rev":"")+'"><div class="dn"><span>'+d+' <span class="dl">'+M[2]+'</span></span><small>'+DN[dt.getDay()]+'</small>'+
         (inf.spend?'<span class="dsp">$'+Math.round(inf.spend)+(inf.half?'<span class="hf">&frac12;</span>':'')+'</span>':'')+'</div><div class="abars">';
-      inf.r.forEach(function(x){h+='<button class="ab'+(inf.half?" half":"")+'" style="background-color:'+CAMP[x.id].c+'" data-a="'+x.id+'" data-d="'+k+'">'+(x.id==="a1"?"Nexi: ":"")+x.label+'</button>'});
-      if(rev)h+='<span class="revtag">Quarter review: keep, change or stop</span>';
+      inf.r.forEach(function(x){h+='<button class="ab'+(inf.half?" half":"")+'" style="background-color:'+CAMP[x.f.a].c+'" data-f="'+x.f.i+'" data-d="'+k+'">'+(x.isNew?'<span class="nwb">NEW</span>':'')+esc(x.f.theme)+'</button>'});
+      if(rev)h+='<span class="revtag">Quarter review: check results, adjust</span>';
       h+='</div></div>';
     }
     var tail=(7-(start+days)%7)%7;for(i=0;i<tail;i++)h+='<div class="day out"></div>';
     document.getElementById("amonth").innerHTML=h;
   }
   // gallery
-  var names={"ad1":"Odoo ERP: make it one","ad2":"Discovery: we map it first","ad3":"AI for Odoo: your final say","ad4":"Ask Nexi, AI companion","ad5":"Nexi Explains series","ad6":"Odoo implemented properly","ad7":"Training on your data","ad8":"Integration: no re-typing","ad9":"Support: same team"};
-  document.getElementById("adgal").innerHTML=Object.keys(ADTH).map(function(f){var id=(f.match(/fb-(ad\d)/)||[])[1];return '<figure><img loading="lazy" alt="" src="data:image/jpeg;base64,'+ADTH[f]+'"><figcaption>'+(names[id]||f)+'</figcaption></figure>'}).join("");
+  var names={"1":"Five spreadsheets? Make it one","2":"We map it first","3":"Your AI teammate","4":"Got an Odoo question? Ask Nexi","5":"Odoo, AI & tech, made simple","6":"Odoo ERP, implemented properly","7":"Training on your own data","8":"Nobody re-types between systems","9":"After go-live, the same team"};
+  var used={};FL.forEach(function(f){var m=f.cr.match(/^Ad (\d)/);if(m)used[m[1]]=(used[m[1]]||[]).concat(f.theme)});
+  document.getElementById("adgal").innerHTML=Object.keys(ADTH).map(function(f){var id=(f.match(/fb-ad(\d)/)||[])[1];return '<figure><img loading="lazy" alt="" src="data:image/jpeg;base64,'+ADTH[f]+'"><figcaption>'+(names[id]||f)+'<br><span class="'+(used[id]?"use":"spare")+'">'+(used[id]?"Used: "+used[id].join(", "):"Spare")+'</span></figcaption></figure>'}).join("");
   // modal
-  var modal=document.getElementById("am"),last=null;
-  function open(id,k,btn){last=btn;var c=CAMP[id],inf=dayInfo(k),x=inf.r.filter(function(z){return z.id===id})[0];
-    var pic="",creative;
-    if(id==="a1"){pic=x.live.map(function(e){return '<img alt="" style="margin-bottom:8px" src="data:image/jpeg;base64,'+NTH[e.img]+'">'}).join("");
-      creative=x.live.map(function(e){return e.code+" "+e.title+" (premiered "+nice(e.prem)+", runs to "+nice(addDays(e.prem,6))+")"}).join("; ");}
-    else{creative=id==="a2"?a2creative(k):"The Discovery ad with Nexi + the EP06 Odoo Accounting short";
-      pic='<div style="width:100%;aspect-ratio:4/5;border-radius:10px;background:'+c.c+';display:grid;place-items:center;color:#fff;font:800 22px var(--h);text-align:center;padding:16px">'+c.n.split(" \u00b7 ")[1]+'</div>';}
-    document.getElementById("amPic").innerHTML=pic;
-    document.getElementById("amMeta").textContent=nice(k)+(inf.half?" \u00b7 half budget":"");
-    document.getElementById("amTitle").textContent=c.n;
-    var rows=[["Objective",c.obj],["Today's creative",creative],["Spend today","~$"+x.spend.toFixed(x.spend%1?2:0)+(id==="a1"&&x.live.length>1?" (shared by "+x.live.length+" episodes)":"")],["Audience",c.aud],["Link",c.link],["Headline",c.head],["Button",c.btn],["Status","Planned, not launched"+(id!=="a1"?" (needs the Meta Pixel)":"")]];
-    document.getElementById("amDl").innerHTML=rows.map(function(r){return "<dt>"+r[0]+"</dt><dd>"+r[1]+"</dd>"}).join("");
-    document.getElementById("amCap").textContent="Ad copy:\n"+c.copy;
+  var modal=document.getElementById("am"),last=null,curF=null;
+  function open(f,k,btn){last=btn;curF=f;var c=CAMP[f.a];
+    document.getElementById("amPic").innerHTML='<img alt="" src="'+f.img+'">';
+    document.getElementById("amMeta").textContent=c.n+" \u00b7 "+nice(f.from)+" to "+nice(f.to);
+    document.getElementById("amTitle").textContent=f.theme;
+    var sp=k?dayInfo(k).r.filter(function(x){return x.f===f})[0]:null;
+    var rows=[["Objective",c.obj],["Creative",f.cr],["Headline",f.head],["Button",c.btn],["Link",c.link],["Budget","$"+flSpend(f)+" for this month"+(sp?" \u00b7 ~$"+sp.spend.toFixed(sp.spend%1?2:0)+" on "+nice(k):"")],["Audience",c.aud],["Status","Planned, not launched"+(f.a!=="a1"?" (needs the Meta Pixel)":"")]];
+    document.getElementById("amDl").innerHTML=rows.map(function(r){return "<dt>"+r[0]+"</dt><dd>"+esc(r[1])+"</dd>"}).join("");
+    document.getElementById("amCap").textContent=f.copy;
+    document.getElementById("amCopy").textContent="Copy ad copy";
     modal.classList.add("on");document.getElementById("amx").focus()}
   function close(){modal.classList.remove("on");if(last)last.focus()}
-  document.getElementById("amonth").addEventListener("click",function(e){var b=e.target.closest(".ab");if(b)open(b.getAttribute("data-a"),b.getAttribute("data-d"),b)});
+  document.getElementById("amonth").addEventListener("click",function(e){var b=e.target.closest(".ab");if(b)open(FL[+b.getAttribute("data-f")],b.getAttribute("data-d"),b)});
+  document.getElementById("mplan").addEventListener("click",function(e){var b=e.target.closest(".mp-c[data-f]");if(b)open(FL[+b.getAttribute("data-f")],null,b)});
   document.getElementById("amx").onclick=close;
   modal.addEventListener("click",function(e){if(e.target===modal)close()});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("on"))close()});
+  document.getElementById("amCopy").onclick=function(){var t=curF.head+"\n\n"+curF.copy,b=this;
+    function done(){b.textContent="Copied"}
+    function fb(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}a.remove()}
+    try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}};
   draw();
 })();
 </script>

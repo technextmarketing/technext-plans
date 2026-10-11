@@ -65,6 +65,7 @@ section.s:nth-of-type(even){background:var(--alt)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
 .cards{display:grid;gap:14px}
 .c3{grid-template-columns:repeat(3,1fr)}
+.c2{grid-template-columns:repeat(2,1fr)}
 .c4{grid-template-columns:repeat(4,1fr)}
 .card h3{font-size:17px;line-height:1.3;margin-bottom:6px}
 .card p{font-size:14.5px}
@@ -98,8 +99,8 @@ section.s:nth-of-type(even){background:var(--alt)}
 .camp dt{color:var(--muted)}
 .camp dd{margin:0;color:var(--ink)}
 .bar{display:flex;height:12px;border-radius:999px;overflow:hidden;margin:26px 0 10px}
-.bar span:nth-child(1){flex:300;background:var(--blue)}
-.bar span:nth-child(2){flex:450;background:var(--odoo)}
+.bar span:nth-child(1){flex:400;background:var(--blue)}
+.bar span:nth-child(2){flex:600;background:var(--odoo)}
 .bar span:nth-child(3){flex:250;background:var(--teal)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13.5px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
@@ -158,6 +159,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
   .bubble{left:auto;right:-190px;top:24%}
   .brand{margin-bottom:20px}
   .c3,.c4,.tl,.math{grid-template-columns:1fr 1fr}
+  .c2{grid-template-columns:1fr}
   .flow{grid-template-columns:1fr 1fr;gap:10px}
   .step,.step:first-child,.step:last-child{border-radius:16px;border-left:1px solid var(--line)}
   .step+.step::before{display:none}
@@ -192,7 +194,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
       <p class="lead">One simple plan built on the work already done: the Nexi series, the post library and the AI team. One goal for the quarter: a signed Odoo client.</p>
       <div class="stats">
         <div class="stat"><b>$1,000</b><small>ads a month</small></div>
-        <div class="stat"><b>13 weeks</b><small>max $3,000</small></div>
+        <div class="stat"><b>2 ads</b><small>long term, new monthly</small></div>
         <div class="stat"><b>4&ndash;8</b><small>booked calls a month</small></div>
         <div class="stat"><b>1</b><small>signed client by 11 Jan</small></div>
       </div>
@@ -226,7 +228,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
     <div class="flow">
       <div class="step"><span class="n">STEP 1</span><h3>See</h3><p>Nexi episodes and daily posts reach Singapore business owners.</p><span class="who">Organic + Ad 1</span></div>
       <div class="step"><span class="n">STEP 2</span><h3>Warm up</h3><p>Anyone who watches half an episode or visits the site joins a warm audience.</p><span class="who">Built automatically</span></div>
-      <div class="step"><span class="n">STEP 3</span><h3>Book</h3><p>Odoo ads ask for a 30-minute discovery call. Warm people see it first.</p><span class="who">Ads 2 + 3</span></div>
+      <div class="step"><span class="n">STEP 3</span><h3>Book</h3><p>Odoo ads ask for a 30-minute discovery call. Warm people see it first.</p><span class="who">Ad 2</span></div>
       <div class="step"><span class="n">STEP 4</span><h3>Close</h3><p>Reply the same day, hold the call, send a proposal.</p><span class="who">You</span></div>
     </div>
   </div>
@@ -234,28 +236,24 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
 
 <section class="s">
   <div class="wrap">
-    <div class="head"><p class="eyebrow">03 &middot; Paid ads</p><h2>Three campaigns, one $1,000 monthly budget</h2><p class="sub">Facebook + Instagram, Singapore. The ads are mostly the episodes themselves, so no new production is needed.</p></div>
-    <div class="cards c3">
+    <div class="head"><p class="eyebrow">03 &middot; Paid ads</p><h2>Two ads, long term, new every month</h2><p class="sub">Facebook + Instagram, Singapore, $1,000 a month with no end date. Each ad is swapped for a new direct ad on the 1st of every month.</p></div>
+    <div class="cards c2">
       <div class="card camp">
-        <div class="top"><span class="num">AD 1 &middot; SERIES</span><span class="amt">$300<small> /mo</small></span></div>
-        <h3>Nexi Explains</h3><p class="goal">Get episodes watched cheaply</p>
-        <dl><dt>Objective</dt><dd>ThruPlay video views</dd><dt>Who</dt><dd>SG, 25&ndash;60, business owners</dd><dt>Creative</dt><dd>Each new episode, 7 days of spend</dd><dt>Starts</dt><dd>Tue 13 Oct (EP00)</dd></dl>
+        <div class="top"><span class="num">AD 1 &middot; NEXI EXPLAINS</span><span class="amt">$400<small> /mo</small></span></div>
+        <h3>Nexi Explains</h3><p class="goal">Build a warm audience of business owners</p>
+        <dl><dt>Objective</dt><dd>ThruPlay video views</dd><dt>Who</dt><dd>SG, 25&ndash;60, business owners</dd><dt>Creative</dt><dd>One general series ad a month (Oct: Meet Nexi, Nov: one system, Dec: Quick Tips)</dd><dt>Starts</dt><dd>Tue 13 Oct</dd></dl>
       </div>
       <div class="card camp">
-        <div class="top"><span class="num">AD 2 &middot; COLD</span><span class="amt">$450<small> /mo</small></span></div>
-        <h3>Odoo discovery call</h3><p class="goal">Book calls from new people</p>
-        <dl><dt>Objective</dt><dd>Leads &rarr; booked call</dd><dt>Who</dt><dd>SG SME owners, ERP / Xero / QuickBooks interest</dd><dt>Creative</dt><dd>EP03 Before vs After + Order-to-cash ad</dd><dt>Starts</dt><dd>Mon 19 Oct</dd></dl>
-      </div>
-      <div class="card camp">
-        <div class="top"><span class="num">AD 3 &middot; RETARGET</span><span class="amt">$250<small> /mo</small></span></div>
-        <h3>Book the call</h3><p class="goal">Turn warm viewers into calls</p>
-        <dl><dt>Objective</dt><dd>Leads &rarr; booked call</dd><dt>Who</dt><dd>Nexi 50% viewers, engagers, site visitors</dd><dt>Creative</dt><dd>Discovery ad with Nexi + EP06 Accounting</dd><dt>Starts</dt><dd>~Mon 2 Nov (1,000+ warm)</dd></dl>
+        <div class="top"><span class="num">AD 2 &middot; ODOO</span><span class="amt">$600<small> /mo</small></span></div>
+        <h3>Odoo discovery call</h3><p class="goal">Book 30-minute calls</p>
+        <dl><dt>Objective</dt><dd>Leads &rarr; booked call</dd><dt>Who</dt><dd>New SG SME owners + Nexi viewers and site visitors</dd><dt>Creative</dt><dd>One problem a month (Oct: re-typing, Nov: stock, Dec: month-end)</dd><dt>Starts</dt><dd>Mon 19 Oct</dd></dl>
       </div>
     </div>
-    <div class="bar" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div class="legend"><span><i style="background:var(--blue)"></i>Nexi 30%</span><span><i style="background:var(--odoo)"></i>Odoo cold 45%</span><span><i style="background:var(--teal)"></i>Retarget 25%</span></div>
+    <div class="bar" aria-hidden="true"><span></span><span></span></div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>Nexi Explains 40%</span><span><i style="background:var(--odoo)"></i>Odoo 60%</span></div>
+    <p class="sub" style="margin-top:10px;font-size:14px">The full 12-month ad plan, with every month's copy, is on the posting schedule page.</p>
     <div class="math">
-      <div><b>5k&ndash;10k</b><small>ThruPlays a month</small></div>
+      <div><b>7k&ndash;13k</b><small>ThruPlays a month</small></div>
       <div><b>4&ndash;8</b><small>booked calls a month</small></div>
       <div><b>2&ndash;3</b><small>qualified a month</small></div>
       <div><b>1 client</b><small>~SGD 13k first year covers the spend</small></div>
@@ -280,9 +278,9 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
     <div class="head"><p class="eyebrow">05 &middot; Timeline</p><h2>Set up, launch, tune, close</h2></div>
     <div class="tl">
       <div class="ph now"><span class="d">10 &ndash; 12 Oct</span><h3>Week 0 &middot; Set up</h3><ul><li>Install Meta Pixel via Tag Manager</li><li>Booked-call event on the booking page</li><li>Add the SPF record</li><li>Create audiences + UTM links</li><li>Upload EP00 to the FB Page</li></ul></div>
-      <div class="ph"><span class="d">13 Oct &ndash; 8 Nov</span><h3>Month 1 &middot; Launch</h3><ul><li>Ad 1 live with EP00</li><li>Ad 2 live Mon 19 Oct</li><li>Ad 3 live ~Mon 2 Nov</li><li>Daily posts on all 3 platforms</li></ul></div>
-      <div class="ph"><span class="d">9 Nov &ndash; 6 Dec</span><h3>Month 2 &middot; Tune</h3><ul><li>Keep the winning ads, drop the rest</li><li>Swap weak ad for Month-end close</li><li>S1 finale Thu 3 Dec</li><li>Start cold email to Razel's leads</li></ul></div>
-      <div class="ph"><span class="d">7 Dec &ndash; 10 Jan</span><h3>Month 3 &middot; Close</h3><ul><li>Quick Tips daily 4&ndash;17 Dec</li><li>Push retargeting</li><li>Half budget 21 Dec &ndash; 3 Jan</li><li>Review Mon 11 Jan 2027</li></ul></div>
+      <div class="ph"><span class="d">13 Oct &ndash; 8 Nov</span><h3>Month 1 &middot; Launch</h3><ul><li>Ad 1 live with EP00</li><li>Ad 2 live Mon 19 Oct</li><li>New ads every 1st of the month</li><li>Daily posts on all 3 platforms</li></ul></div>
+      <div class="ph"><span class="d">9 Nov &ndash; 6 Dec</span><h3>Month 2 &middot; Tune</h3><ul><li>Nov ads: one system + stock</li><li>Swap weak ad for Month-end close</li><li>S1 finale Thu 3 Dec</li><li>Start cold email to Razel's leads</li></ul></div>
+      <div class="ph"><span class="d">7 Dec &ndash; 10 Jan</span><h3>Month 3 &middot; Close</h3><ul><li>Quick Tips daily 4&ndash;17 Dec</li><li>Dec ads: Quick Tips + month-end</li><li>Half budget 21 Dec &ndash; 3 Jan</li><li>Review Mon 11 Jan 2027</li></ul></div>
     </div>
   </div>
 </section>
@@ -293,7 +291,7 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
     <div class="week">
       <div class="day"><b>MON</b><p>Check last week's numbers. Approve the week's posts and creatives.</p><span>45 min</span></div>
       <div class="day"><b>TUE</b><p>Episode premieres. Start its 7-day ad.</p><span>15 min</span></div>
-      <div class="day"><b>WED</b><p>Ads check. One change per ad set, max.</p><span>20 min</span></div>
+      <div class="day"><b>WED</b><p>Ads check. No edits mid-month.</p><span>20 min</span></div>
       <div class="day"><b>THU</b><p>Episode premieres. Follow up every booking.</p><span>30 min</span></div>
       <div class="day"><b>FRI</b><p>Write a 5-line report. Plan next week.</p><span>30 min</span></div>
       <div class="day"><b>SAT</b><p>Episode premieres. Start its 7-day ad.</p><span>10 min</span></div>
@@ -310,16 +308,15 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--muted)}
       <tbody>
         <tr><td>Cost per ThruPlay</td><td>under $0.06</td><td>weekly</td></tr>
         <tr><td>Warm audience</td><td>4,000+ by 11 Jan</td><td>monthly</td></tr>
-        <tr><td>Cost per booked call, cold</td><td>under $180</td><td>weekly from week 4</td></tr>
-        <tr><td>Cost per booked call, retarget</td><td>under $120</td><td>weekly</td></tr>
+        <tr><td>Cost per booked call</td><td>under $150</td><td>weekly from week 4</td></tr>
         <tr><td>Qualified calls</td><td>2&ndash;3 a month</td><td>monthly</td></tr>
         <tr><td>Signed clients</td><td>1 by 11 Jan</td><td>at review</td></tr>
       </tbody>
     </table></div>
     <div class="cards c3 rules">
-      <div class="card"><p><b>Over target 2 weeks?</b> Swap the creative before raising budget.</p></div>
-      <div class="card"><p><b>An ad beats target?</b> Move $5 a day to it from the weakest ad.</p></div>
-      <div class="card"><p><b>No client by 11 Jan?</b> Stop spend and review before Q1.</p></div>
+      <div class="card"><p><b>Over target 2 weeks?</b> Bring the next month&rsquo;s ad forward, don&rsquo;t raise the budget.</p></div>
+      <div class="card"><p><b>An ad beats target?</b> Keep its angle and reuse it in a later month.</p></div>
+      <div class="card"><p><b>No client by 11 Jan?</b> Rework the Odoo ad&rsquo;s offer and audience at the quarter review.</p></div>
     </div>
   </div>
 </section>
