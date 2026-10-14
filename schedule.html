@@ -88,6 +88,8 @@ main{min-width:0;padding:16px 20px 40px}
 .stat span{font-size:11.5px;color:var(--ink-3)}
 .chk{display:flex;align-items:center;gap:9px;padding:5px 6px;border-radius:7px;cursor:pointer;user-select:none;font-size:13px;color:var(--ink-2)}
 .chk:hover{background:var(--bg)}
+.fg{font:700 11.5px/1 var(--f-d);color:var(--ink-3);padding:10px 6px 4px}
+.fg:first-child{padding-top:2px}
 .chk input{position:absolute;opacity:0;pointer-events:none}
 .chk .box{width:15px;height:15px;border-radius:4px;border:1.5px solid var(--c,#9AA0B5);display:grid;place-items:center;flex:none;background:#fff}
 .chk input:checked+.box{background:var(--c,var(--blue));border-color:var(--c,var(--blue))}
@@ -211,6 +213,8 @@ main{min-width:0;padding:16px 20px 40px}
 /* info drawer content */
 .info h3{font:800 15px/1.3 var(--f-d);margin:18px 0 6px}
 .info h3:first-child{margin-top:0}
+.info .ng{font:800 12px/1 var(--f-d);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:26px 0 4px;padding-top:14px;border-top:1px solid var(--line)}
+.info .ng:first-child{margin-top:0;padding-top:0;border-top:0}
 .info p,.info li{font-size:13px;color:var(--ink-2);margin:0 0 6px}
 .info ul{padding-left:18px;margin:0 0 8px}
 .info table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:8px}
@@ -251,13 +255,13 @@ main{min-width:0;padding:16px 20px 40px}
   <a class="logo" href="https://technextmarketing.github.io/technext-plans/all-schedules.html"><img src="https://technextsg.github.io/technext-marketing-hub/assets/logo/technext-wide-blue.png" alt="TechNext" width="110" height="22"><b>Schedules</b></a>
   <nav class="switch" id="switch" aria-label="Schedules"></nav>
   <span class="sp"></span>
-  <a class="lnk" href="https://technextmarketing.github.io/technext-plans/all-schedules.html">All schedules</a>
   <a class="lnk" href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
 </header>
 
 <div class="app">
   <aside class="side" id="side" aria-label="Filters">
     <div class="blk"><h3>Overview</h3><div class="stats" id="stats"></div></div>
+    <div class="blk" id="b-grp"><h3>Source <button type="button" data-all="grp">All</button></h3><div id="f-grp"></div></div>
     <div class="blk"><h3>Type <button type="button" data-all="type">All</button></h3><div id="f-type"></div></div>
     <div class="blk" id="b-topic"><h3>Topic <button type="button" data-all="topic">All</button></h3><div id="f-topic"></div></div>
     <div class="blk"><h3>Platform <button type="button" data-all="plat">All</button></h3><div id="f-plat"></div></div>
@@ -328,8 +332,9 @@ var ADS_O=[["2026-10-19","2026-10-31","Stop re-typing",104,"Typing the same orde
 </script>
 <script>
 /* ===== page config + adapter: turns this page's data into calendar items ===== */
+window.PAGE={"id": "tn", "title": "TechNext Posting Schedule", "sub": null, "parts": ["A_TN"]};
 
-window.SCHED=function(){
+window.A_TN=function(){
   var D=new Set(typeof DONE!=="undefined"?DONE:[]),ND=new Set(typeof NDONE!=="undefined"?NDONE:[]);
   function im(f){return IMGS[f]?"data:image/jpeg;base64,"+IMGS[f]:NTH[f]?"data:image/jpeg;base64,"+NTH[f]:""}
   var items=[];
@@ -361,7 +366,7 @@ window.SCHED=function(){
   var types={post:{n:"Social post",c:"#3167CA"},nxp:{n:"Nexi Explains poster",c:"#6E8FD8"},yt:{n:"YouTube premiere",c:"#C9443F"},tt:{n:"TikTok",c:"#3A3D52"},hol:{n:"Holiday post",c:"#C47A2C"},ad:{n:"Paid ad",c:"#8A5E80"}};
   var topics={};Object.keys(COLORS).forEach(function(k){topics[k]={n:k,c:COLORS[k]}});
   var KC={content:"#3167CA",nexi:"#C9443F",ads:"#8A5E80",holiday:"#C47A2C",review:"#1F8A5B"};
-  return {id:"tn",title:"TechNext Posting Schedule",
+  return {id:"tn",short:"TechNext",color:"#3167CA",title:"TechNext Posting Schedule",
     sub:"Social posts, Nexi Explains on YouTube + TikTok, holiday posts and paid ads &middot; all times SGT / PHT",
     types:types,topics:topics,items:items,
     keydates:KD.map(function(k){return {d:k[0],end:k[1],t:k[3],x:k[4],c:KC[k[2]]}}),
@@ -373,10 +378,25 @@ window.SCHED=function(){
 (function(){
 "use strict";
 var PAGES=[
-  {id:"tn",label:"TechNext posts",href:"https://technextmarketing.github.io/technext-plans/schedule.html",c:"#3167CA"},
-  {id:"isv",label:"Isabelle videos",href:"https://technextmarketing.github.io/isabelle-youtube-schedule/",c:"#9C3B5B"},
-  {id:"isi",label:"Isabelle images",href:"https://technextmarketing.github.io/isabelle-youtube-schedule/images.html",c:"#9C3B5B"}
+  {id:"all",label:"All schedules",href:"https://technextmarketing.github.io/technext-plans/all-schedules.html",c:"linear-gradient(90deg,#3167CA 50%,#9C3B5B 50%)"},
+  {id:"tn",label:"TechNext",href:"https://technextmarketing.github.io/technext-plans/schedule.html",c:"#3167CA"},
+  {id:"is",label:"Isabelle",href:"https://technextmarketing.github.io/isabelle-youtube-schedule/",c:"#9C3B5B"}
 ];
+/* merge the page's parts (one adapter per data source) into one calendar */
+function combine(){
+  var P=window.PAGE,parts=P.parts.map(function(f){return window[f]()}),multi=parts.length>1;
+  var out={id:P.id,title:P.title||parts[0].title,sub:P.sub||parts[0].sub,types:{},topics:null,items:[],keydates:[],groups:{},multi:multi,notes:""};
+  parts.forEach(function(c){
+    out.groups[c.id]={n:c.short,c:c.color};
+    Object.keys(c.types).forEach(function(k){out.types[c.id+":"+k]={n:c.types[k].n,c:c.types[k].c,g:c.id}});
+    if(c.topics){out.topics=out.topics||{};Object.keys(c.topics).forEach(function(k){out.topics[k]=c.topics[k]})}
+    c.items.forEach(function(e){e.grp=c.id;e.type=c.id+":"+e.type;out.items.push(e)});
+    (c.keydates||[]).forEach(function(k){k.g=c.id;out.keydates.push(k)});
+    out.notes+=(multi?'<h2 class="ng">'+c.short+'</h2>':'')+c.notes;
+  });
+  out.keydates.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0});
+  return out;
+}
 var PL={fb:{n:"Facebook",a:"FB",c:"#3167CA"},ig:{n:"Instagram",a:"IG",c:"#B4407A"},li:{n:"LinkedIn",a:"in",c:"#1E6FA8"},yt:{n:"YouTube",a:"YT",c:"#D02B2B"},tt:{n:"TikTok",a:"TT",c:"#23253A"}};
 var ST={q:"Queued",p:"Planned",s:"To set up"};
 var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],MONL=["January","February","March","April","May","June","July","August","September","October","November","December"],DN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -390,7 +410,7 @@ function tmin(t){if(!t)return 9999;var m=/(\d{1,2}):(\d{2})\s*(AM|PM)/i.exec(t);
 function $(id){return document.getElementById(id)}
 function svg(p){return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'}
 
-var C=window.SCHED(); // {id,title,sub,types:{k:{n,c}},topics?:{k:{n,c}},items:[],keydates:[],notes:html,range:[a,b]}
+var C=combine(); // {id,title,sub,types:{k:{n,c}},topics?:{k:{n,c}},items:[],keydates:[],notes:html,range:[a,b]}
 var IT=C.items;
 IT.forEach(function(e,i){
   e.i=i;e.title=decode(e.title);e.sub=decode(e.sub||"");
@@ -405,15 +425,15 @@ var byDay={};IT.forEach(function(e){if(!e.band)(byDay[e.d]=byDay[e.d]||[]).push(
 var BANDS=IT.filter(function(e){return e.band});
 
 /* ----- state ----- */
-var LS="sched-app:"+C.id,S={view:"month",f:{type:{},topic:{},plat:{},st:{}},q:""};
-try{var sv=JSON.parse(localStorage.getItem(LS)||"null");if(sv){S.view=sv.view||S.view;S.f=sv.f||S.f}}catch(e){}
+var LS="sched-app:"+C.id,S={view:"month",f:{grp:{},type:{},topic:{},plat:{},st:{}},q:""};
+try{var sv=JSON.parse(localStorage.getItem(LS)||"null");if(sv){S.view=sv.view||S.view;S.f=sv.f||S.f;S.f.grp=S.f.grp||{}}}catch(e){}
 if(innerWidth<720&&!localStorage.getItem(LS+":v"))S.view="list";
 function save(){try{localStorage.setItem(LS,JSON.stringify({view:S.view,f:S.f}))}catch(e){}}
 var now=new Date(),TODAY=key(now),first=IT.length?IT[0].d:TODAY,last=IT.length?IT[IT.length-1].d:TODAY;
 var cur=pd(TODAY<first?first:TODAY>last?last:TODAY); // anchor date
 var sel=-1;
 (function(){var h=location.hash.slice(1);if(!h)return;h.split("&").forEach(function(kv){var p=kv.split("=");
-  if(p[0]==="v"&&/^(month|week|list)$/.test(p[1]))S.view=p[1];if(p[0]==="d"&&/^\d{4}-\d\d-\d\d$/.test(p[1]))cur=pd(p[1]);if(p[0]==="q")S.q=decodeURIComponent(p[1]).toLowerCase()})})();
+  if(p[0]==="v"&&/^(month|week|list)$/.test(p[1]))S.view=p[1];if(p[0]==="d"&&/^\d{4}-\d\d-\d\d$/.test(p[1]))cur=pd(p[1]);if(p[0]==="q")S.q=decodeURIComponent(p[1]).toLowerCase();if(p[0]==="g"&&C.groups[p[1]])Object.keys(C.groups).forEach(function(g){S.f.grp[g]=(g===p[1])})})})();
 
 /* ----- filters ----- */
 function facet(name,keys,label,color,count){
@@ -421,12 +441,18 @@ function facet(name,keys,label,color,count){
   box.innerHTML=keys.map(function(k){var on=S.f[name][k]!==false;
     return '<label class="chk'+(on?'':' off')+'" style="--c:'+color(k)+'"><input type="checkbox" data-f="'+name+'" value="'+esc(k)+'"'+(on?' checked':'')+'><span class="box"></span><span class="nm">'+esc(label(k))+'</span><span class="ct">'+count(k)+'</span></label>'}).join("");
 }
+var GK=Object.keys(C.groups);
 var TK=Object.keys(C.types).filter(function(k){return IT.some(function(e){return e.type===k})});
 var TPK=C.topics?Object.keys(C.topics).filter(function(k){return IT.some(function(e){return e.topic===k})}):[];
 var PK=Object.keys(PL).filter(function(k){return IT.some(function(e){return (e.pl||[]).some(function(p){return p.k===k})})});
 var SK=Object.keys(ST).filter(function(k){return IT.some(function(e){return e.st===k})});
 function drawFacets(){
+  $("b-grp").hidden=GK.length<2;
+  if(GK.length>1)facet("grp",GK,function(k){return C.groups[k].n},function(k){return C.groups[k].c},function(k){return IT.filter(function(e){return e.grp===k}).length});
   facet("type",TK,function(k){return C.types[k].n},function(k){return C.types[k].c},function(k){return IT.filter(function(e){return e.type===k}).length});
+  if(C.multi){var lastG=null;TK.forEach(function(k){var g=C.types[k].g;if(g===lastG)return;lastG=g;
+    var inp=$("f-type").querySelector('input[value="'+k.replace(/"/g,'\\"')+'"]');if(!inp)return;
+    var h=document.createElement("div");h.className="fg";h.textContent=C.groups[g].n;inp.closest(".chk").before(h)})}
   $("b-topic").hidden=!TPK.length;
   if(TPK.length)facet("topic",TPK,function(k){return C.topics[k].n},function(k){return C.topics[k].c},function(k){return IT.filter(function(e){return e.topic===k}).length});
   facet("plat",PK,function(k){return PL[k].n},function(k){return PL[k].c},function(k){return IT.filter(function(e){return (e.pl||[]).some(function(p){return p.k===k})}).length});
@@ -434,9 +460,9 @@ function drawFacets(){
 }
 $("side").addEventListener("change",function(e){var t=e.target;if(!t.dataset.f)return;S.f[t.dataset.f][t.value]=t.checked;save();t.closest(".chk").classList.toggle("off",!t.checked);render()});
 $("side").addEventListener("click",function(e){var b=e.target.closest("[data-all]");if(!b)return;var n=b.dataset.all,f=S.f[n],any=Object.keys(f).some(function(k){return f[k]===false});
-  var ks=n==="type"?TK:n==="topic"?TPK:n==="plat"?PK:SK;ks.forEach(function(k){f[k]=any?true:(k===ks[0])});save();drawFacets();render()});
+  var ks=n==="grp"?GK:n==="type"?TK:n==="topic"?TPK:n==="plat"?PK:SK;ks.forEach(function(k){f[k]=any?true:(k===ks[0])});save();drawFacets();render()});
 function vis(e){
-  var f=S.f;if(f.type[e.type]===false)return false;
+  var f=S.f;if(f.grp[e.grp]===false)return false;if(f.type[e.type]===false)return false;
   if(e.topic&&f.topic[e.topic]===false)return false;
   if(e.st&&f.st[e.st]===false)return false;
   if(e.pl&&e.pl.length&&!e.pl.some(function(p){return f.plat[p.k]!==false}))return false;
@@ -452,7 +478,7 @@ function cnt(st){return IT.filter(function(e){return e.st===st&&!e.band}).length
 $("hpills").innerHTML=SK.map(function(k){return '<span class="pill '+k+'">'+cnt(k)+' '+ST[k].toLowerCase()+'</span>'}).join("")+'<span class="pill">'+nice(first).replace(/^\w+ /,"")+' – '+nice(last,1).replace(/^\w+ /,"")+'</span>';
 (function(){var wk=IT.filter(function(e){var d=(pd(e.d)-pd(TODAY))/864e5;return !e.band&&d>=0&&d<7}).length,td=(byDay[TODAY]||[]).length,all=IT.filter(function(e){return !e.band}).length;
   $("stats").innerHTML=[[all,"items"],[Math.round(cnt("q")/Math.max(all,1)*100)+"%","queued"],[td,"today"],[wk,"next 7 days"]].map(function(s){return '<div class="stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join("")})();
-$("kd").innerHTML=(C.keydates||[]).map(function(k){return '<li data-go="'+k.d+'" class="'+((k.end||k.d)<TODAY?"past":"")+'" style="--c:'+(k.c||"#3167CA")+'"><span class="dd">'+nice(k.d).replace(/^\w+ /,"")+(k.end?'<br>– '+nice(k.end).replace(/^\w+ /,""):"")+'</span><span><b>'+esc(decode(k.t))+'</b>'+(k.x?'<span>'+esc(decode(k.x))+'</span>':'')+'</span></li>'}).join("")||'<li><span>None</span></li>';
+$("kd").innerHTML=(C.keydates||[]).map(function(k){return '<li data-go="'+k.d+'" class="'+((k.end||k.d)<TODAY?"past":"")+'" style="--c:'+(k.c||"#3167CA")+'"><span class="dd">'+nice(k.d).replace(/^\w+ /,"")+(k.end?'<br>– '+nice(k.end).replace(/^\w+ /,""):"")+'</span><span><b>'+esc(decode(k.t))+'</b>'+(C.multi?'<span>'+esc(C.groups[k.g].n)+'</span>':'')+(k.x?'<span>'+esc(decode(k.x))+'</span>':'')+'</span></li>'}).join("")||'<li><span>None</span></li>';
 $("kd").addEventListener("click",function(e){var li=e.target.closest("[data-go]");if(!li)return;cur=pd(li.dataset.go);if(S.view==="list")S.view="week";render();closeSide()});
 
 /* ----- render ----- */
@@ -522,7 +548,7 @@ var tab=null;
 function order(){return IT.filter(vis)}
 function openItem(i){sel=i;var e=IT[i],P=e.pl||[];if(!tab||!P.some(function(p){return p.k===tab}))tab=P.length?P[0].k:null;
   var O=order(),pos=O.indexOf(e);
-  $("dhd").innerHTML='<span class="tchip" style="--c:'+tcol(e)+'"><i></i><span>'+esc((C.types[e.type]||{}).n||"")+(e.topic&&C.topics?' · '+esc(C.topics[e.topic].n):'')+'</span></span><span class="dnav">'+(pos+1)+' / '+O.length+'</span>'+
+  $("dhd").innerHTML='<span class="tchip" style="--c:'+tcol(e)+'"><i></i><span>'+(C.multi?esc(C.groups[e.grp].n)+' \u00b7 ':'')+esc((C.types[e.type]||{}).n||"")+(e.topic&&C.topics?' · '+esc(C.topics[e.topic].n):'')+'</span></span><span class="dnav">'+(pos+1)+' / '+O.length+'</span>'+
     '<button type="button" class="btn icon ghost" data-nav="-1" aria-label="Previous item" title="Previous (←)">'+svg('<path d="m15 18-6-6 6-6"/>')+'</button><button type="button" class="btn icon ghost" data-nav="1" aria-label="Next item" title="Next (→)">'+svg('<path d="m9 18 6-6-6-6"/>')+'</button><button type="button" class="btn icon ghost" data-x aria-label="Close" title="Close (Esc)">'+svg('<path d="M18 6 6 18M6 6l12 12"/>')+'</button>';
   var h="";
   if(e.img)h+=(e.full?'<a href="'+e.full+'" target="_blank" rel="noopener" title="Open full size">':'')+'<img class="dimg'+(e.wide?'':' port')+'" alt="" src="'+(e.full||e.img)+'">'+(e.full?'</a>':'');
