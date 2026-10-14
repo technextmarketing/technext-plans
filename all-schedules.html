@@ -1,271 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1E4691">
 <meta name="color-scheme" content="light">
-<title>Scheduling Plans</title>
+<title>TechNext Scheduling Plans</title>
 <meta name="description" content="Every client scheduling plan in one place: the TechNext posting schedule and Isabelle's YouTube and image posting schedules.">
-<link rel="icon" type="image/png" href="https://technextsg.github.io/technext-marketing-hub/assets/logo/technext-brandmark-blue.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="48x48" href="https://technextsg.github.io/technext-presentations/assets/img/favicon-48.png">
+<link rel="stylesheet" href="https://technextsg.github.io/technext-presentations/assets/fonts.css?v=39">
 <style>
-/* Same tokens and components as the Marketing Hub (technext-marketing-hub/assets/hub.css) */
+/* Presentations launcher */
 :root{
-  --blue:#3167CA;--blue-700:#1E4691;--blue-300:#6FA0F5;--blue-100:#DDE7F8;--blue-050:#EAF0FB;
-  --ink:#1F1F3D;--ink-2:#4C4C63;--ink-3:#7A7A90;--line:#E3E7F0;--bg:#F6F8FC;--card:#FFFFFF;
-  --ok:#137A4A;--warn:#B45309;--isa:#9C3B5B;
-  --font-display:"Plus Jakarta Sans",Inter,system-ui,sans-serif;--font-body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--font-hand:Caveat,"Segoe Print",cursive;
-  --r:16px;--r-sm:10px;
-  --shadow-sm:0 1px 2px rgba(31,31,61,.06),0 8px 24px -18px rgba(31,31,61,.25);
-  --shadow-md:0 2px 6px rgba(31,31,61,.06),0 24px 48px -28px rgba(31,31,61,.35);
-  --shadow-blue:0 12px 28px -12px rgba(49,103,202,.55);
-  --ease:cubic-bezier(.2,.8,.2,1)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:light}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font-body);
-  background-image:radial-gradient(circle at 1px 1px,rgba(49,103,202,.10) 1px,transparent 0);background-size:26px 26px}
-a{color:var(--blue)}
-h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-.015em;line-height:1.15;margin:0}
-h1{font-weight:800;letter-spacing:-.025em}
-img{max-width:100%;display:block}
-button{font:inherit}
-.hand{font-family:var(--font-hand);font-weight:700;color:var(--blue);font-size:1.35em;letter-spacing:0}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
-.top{position:sticky;top:0;z-index:50;background:rgba(246,248,252,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.brand img{height:30px;width:auto}
-.brand b{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink-2);padding-left:12px;border-left:1px solid var(--line);white-space:nowrap}
-.nav{margin-left:auto;display:flex;gap:4px;align-items:center}
-.nav a{white-space:nowrap;text-decoration:none;color:var(--ink-2);font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;transition:background .2s var(--ease),color .2s var(--ease)}
-.nav a:hover,.nav a[aria-current]{background:var(--blue-050);color:var(--blue-700)}
-.nav a.cta{background:var(--blue);color:#fff}.nav a.cta:hover{background:var(--blue-700)}
-.hero{padding:clamp(40px,7vw,80px) 0 clamp(20px,3vw,32px)}
-.hero .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue-700);background:#fff;border:1px solid var(--blue-100);border-radius:999px;padding:6px 12px;box-shadow:var(--shadow-sm)}
-.hero .kicker i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(19,122,74,.15)}
-.hero h1{font-size:clamp(34px,5.4vw,60px);margin:18px 0 14px;max-width:14ch}
-.hero h1 em{font-style:normal;color:var(--blue);background:linear-gradient(transparent 62%,var(--blue-100) 62%)}
-.hero p{font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);max-width:60ch;margin:0}
-.hero .search{margin-top:26px;display:flex;align-items:center;gap:10px;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 6px 6px 16px;box-shadow:var(--shadow-sm);transition:box-shadow .2s var(--ease),border-color .2s var(--ease)}
-.hero .search:focus-within{border-color:var(--blue-300);box-shadow:0 0 0 4px var(--blue-050),var(--shadow-sm)}
-.hero .search svg{width:18px;height:18px;color:var(--ink-3);flex:none}
-.hero .search input{flex:1;border:0;outline:0;font:inherit;font-size:16px;color:var(--ink);background:transparent;min-width:0;padding:6px 0}
-.hero .search kbd{font:600 12px/1 var(--font-body);color:var(--ink-3);border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--bg)}
-.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{border:1px solid var(--line);background:#fff;color:var(--ink-2);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s var(--ease)}
-.chip:hover{border-color:var(--blue-300);color:var(--blue-700)}
-.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:var(--shadow-blue)}
-section{padding:clamp(22px,3vw,36px) 0;scroll-margin-top:80px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap}
-.sec-head h2{font-size:clamp(20px,2.4vw,26px);font-weight:700}
-.sec-head .n{font-family:var(--font-display);font-weight:800;color:#fff;background:var(--blue);border-radius:10px;width:34px;height:34px;display:inline-grid;place-items:center;font-size:15px;box-shadow:var(--shadow-blue)}
-.sec-head.isa .n{background:var(--isa);box-shadow:0 12px 28px -12px rgba(156,59,91,.55)}
-.sec-head p{margin:0;color:var(--ink-3);font-size:14px}
-.sec-head .count{margin-left:auto;font-size:13px;color:var(--ink-3)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px}
-.app{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
-.app:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--blue-100)}
-.app.is-hidden{display:none}
-.app .shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--blue-050);border-bottom:1px solid var(--line)}
-.app .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transform:scale(1.001);transition:transform .9s var(--ease)}
-.app:hover .shot img{transform:scale(1.04)}
-.app .shot .tag{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:5px 9px;background:rgba(255,255,255,.92);color:var(--ink-2);border:1px solid rgba(31,31,61,.08);backdrop-filter:blur(6px)}
-.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--bc)}
-.badge.live{--bc:var(--ok)}.badge.part{--bc:var(--warn)}.badge.plan{--bc:#B42318}.badge.tn{--bc:var(--blue)}.badge.is{--bc:var(--isa)}
-.app .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-.app .num{font-family:var(--font-display);font-weight:800;font-size:12px;color:var(--blue);letter-spacing:.1em}
-.app.isa .num{color:var(--isa)}
-.app h3{font-size:21px;font-weight:700}
-.app h3 a{color:inherit;text-decoration:none}
-.app h3 a::after{content:"";position:absolute;inset:0}
-.app p{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.55}
-.app .use{font-size:13px;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start}
-.app .use b{color:var(--ink-2);font-weight:600;white-space:nowrap;min-width:64px}
-.stats{display:flex;flex-wrap:wrap;gap:6px}
-.stats span{font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px 8px}
-.stats span b{font-family:var(--font-display);color:var(--ink)}
-.app .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px;position:relative;z-index:1}
-.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:600;font-size:13.5px;border-radius:10px;padding:9px 13px;border:1px solid var(--line);background:#fff;color:var(--ink);transition:all .2s var(--ease);cursor:pointer;line-height:1}
-.btn:hover{border-color:var(--blue-300);color:var(--blue-700);background:var(--blue-050)}
-.btn.p{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:var(--shadow-blue)}
-.btn.p:hover{background:var(--blue-700);border-color:var(--blue-700);color:#fff}
-.app.isa .btn.p{background:var(--isa);border-color:var(--isa);box-shadow:0 12px 28px -12px rgba(156,59,91,.55)}
-.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:12px}
-.row{display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;transition:all .25s var(--ease)}
-.row:hover{border-color:var(--blue-100);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
-.row .ico{width:38px;height:38px;border-radius:10px;background:var(--blue-050);color:var(--blue);display:grid;place-items:center;flex:none}
-.row .ico svg{width:18px;height:18px}
-.row b{display:block;font-size:14.5px;font-weight:600}
-.row span{display:block;font-size:13px;color:var(--ink-3);line-height:1.45}
-.row code{font-size:12px;background:var(--blue-050);color:var(--blue-700);padding:1px 5px;border-radius:5px;word-break:break-all}
-.empty{display:none;text-align:center;color:var(--ink-3);padding:32px;border:1px dashed var(--line);border-radius:var(--r);background:#fff}
-.empty.show{display:block}
-footer{padding:36px 0 48px;color:var(--ink-3);font-size:13px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;border-top:1px solid var(--line);padding-top:20px}
-footer a{color:var(--ink-2)}footer .right{margin-left:auto}
-.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.client.is-hidden{display:none}
-@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
-@media (max-width:1020px){.brand b{display:none}}
-@media (max-width:900px){.nav{gap:2px}.nav a{padding:8px;font-size:13.5px}}
-@media (max-width:720px){.nav a:not(.cta){display:none}.sec-head .count{margin-left:0;width:100%}.hero .search kbd{display:none}}
+  --blue:#3167CA; --blue-700:#1E4691; --blue-300:#6FA0F5; --blue-100:#DDE7F8; --blue-050:#EAF0FB;
+  --ink:#1F1F3D; --body:#4C4C63; --muted:#8888A0; --line:#E7E4E9; --alt:#FAF9FB;
+  --f-display:"Plus Jakarta Sans",system-ui,sans-serif; --f-body:Inter,system-ui,sans-serif; --f-hand:Caveat,cursive;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--alt);color:var(--body);font:400 17px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+kbd{display:inline-block;font:600 12.5px/1 var(--f-display);padding:5px 7px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;box-shadow:0 2px 0 rgba(255,255,255,.14)}
+code{font-size:.92em;background:var(--blue-050);color:var(--blue-700);padding:2px 6px;border-radius:6px}
+.ix-wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
+[hidden]{display:none!important}
+
+/* hero: compact, with the totals on the right */
+.ix-hero{color:#fff;padding:28px 0 64px;background:
+  radial-gradient(ellipse 60% 90% at 90% 0%,rgba(111,160,245,.4),transparent 60%),
+  radial-gradient(ellipse 50% 70% at 0% 100%,rgba(33,183,153,.14),transparent 60%),
+  linear-gradient(140deg,#0F2350 0%,#1E4691 55%,#2D5DB8 100%);position:relative;overflow:hidden}
+.ix-hero::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background-image:radial-gradient(rgba(255,255,255,.12) 1.2px,transparent 1.4px);background-size:28px 28px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 70% 30%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse 80% 80% at 70% 30%,#000 10%,transparent 75%);pointer-events:none}
+.ix-hero .ix-wrap{position:relative}
+.ix-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.ix-logo img{height:32px;width:auto}
+.ix-guide-link{font:700 14px/1 var(--f-display);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.3)}
+.ix-guide-link:hover,.ix-guide-link:focus-visible{background:rgba(255,255,255,.12)}
+.ix-hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:30px}
+.ix-kicker{display:inline-block;margin:0 0 6px;font:700 30px/1 var(--f-hand);color:#A9C8FF;transform:rotate(-1.5deg);transform-origin:0 50%}
+.ix-hero h1{margin:0;font:800 clamp(34px,5vw,58px)/1.04 var(--f-display);letter-spacing:-.025em;max-width:760px;text-wrap:balance}
+.ix-hero h1 span{background:linear-gradient(transparent 72%,rgba(111,160,245,.55) 72%,rgba(111,160,245,.55) 91%,transparent 91%)}
+.ix-lead{margin:14px 0 0;max-width:620px;font-size:clamp(16px,1.8vw,19px);color:rgba(255,255,255,.85)}
+.ix-stats{display:flex;gap:10px;margin:0;flex:none}
+.ix-stats div{display:flex;flex-direction:column-reverse;min-width:104px;padding:14px 16px 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.ix-stats dd{margin:0;font:800 34px/1 var(--f-display);letter-spacing:-.02em}
+.ix-stats dt{margin-top:6px;font:600 12px/1.2 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+/* the filter bar: overlaps the hero, then sticks to the top while you scroll */
+main.ix-wrap{margin-top:-36px;position:relative}
+.ix-bar{position:sticky;top:10px;z-index:20;padding:12px;border-radius:18px;background:#fff;border:1px solid var(--line);
+  box-shadow:0 1px 2px rgba(31,31,61,.06),0 12px 28px -18px rgba(31,31,61,.35)}
+.ix-bar-1,.ix-bar-2{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap}
+.ix-bar-2{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.ix-q{position:relative;display:flex;align-items:center;flex:1 1 220px;min-width:0;max-width:340px}
+.ix-q .ic{position:absolute;left:12px;width:17px;height:17px;color:var(--muted);pointer-events:none}
+.ix-q input{width:100%;padding:11px 36px 11px 38px;border-radius:11px;border:1px solid var(--line);background:var(--alt);font:500 15px/1.2 var(--f-body);color:var(--ink);-webkit-appearance:none;appearance:none}
+.ix-q input:focus{outline:2px solid var(--blue-300);outline-offset:0;background:#fff}
+.ix-q input::-webkit-search-cancel-button{cursor:pointer}
+.ix-q kbd{position:absolute;right:10px;border-color:var(--line);background:#fff;color:var(--muted);box-shadow:0 1px 0 var(--line);padding:4px 7px;font-size:12px}
+.ix-q input:focus~kbd,.ix-q input:not(:placeholder-shown)~kbd{display:none}
+.ix-tabs{display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:13px;background:var(--alt);border:1px solid var(--line)}
+.ix-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:0;border-radius:9px;background:none;font:700 14px/1 var(--f-display);color:var(--body);cursor:pointer;white-space:nowrap}
+.ix-tab span{font:700 11.5px/1 var(--f-display);padding:3px 6px;border-radius:999px;background:var(--blue-050);color:var(--blue)}
+.ix-tab:hover{color:var(--ink);background:#fff}
+.ix-tab[aria-pressed=true]{background:var(--blue);color:#fff;box-shadow:0 6px 14px -8px rgba(49,103,202,.8)}
+.ix-tab[aria-pressed=true] span{background:rgba(255,255,255,.22);color:#fff}
+.ix-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ix-lbl{font:700 11.5px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#6C6C80;margin-right:2px}
+.ix-chip{padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;font:600 13.5px/1 var(--f-display);color:var(--body);cursor:pointer;white-space:nowrap}
+.ix-chip:hover{border-color:var(--blue-300);color:var(--ink)}
+.ix-chip[aria-pressed=true]{background:var(--blue-050);border-color:var(--blue);color:var(--blue-700)}
+.ix-chip[aria-pressed=true]::before{content:"\2713\00a0"}
+.ix-end{display:flex;align-items:center;gap:10px;margin-left:auto}
+.ix-sort{display:flex;align-items:center;gap:6px}
+.ix-sort select{padding:8px 30px 8px 11px;border-radius:10px;border:1px solid var(--line);font:600 13.5px/1.2 var(--f-display);color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238888A0' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 11px center}
+.ix-sort select:focus-visible{outline:2px solid var(--blue-300)}
+.ix-view{display:flex;padding:3px;border-radius:10px;border:1px solid var(--line);background:var(--alt)}
+.ix-view button{display:grid;place-items:center;width:32px;height:28px;border:0;border-radius:7px;background:none;color:var(--muted);cursor:pointer}
+.ix-view .ic{width:16px;height:16px}
+.ix-view button[aria-pressed=true]{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(31,31,61,.12)}
+:is(.ix-tab,.ix-chip,.ix-view button,.ix-clear):focus-visible{outline:2px solid var(--blue-300);outline-offset:2px}
+.ix-count{display:flex;align-items:center;gap:12px;margin:18px 2px 0;font:600 14px/1.3 var(--f-display);color:#6C6C80}
+.ix-clear,.ix-empty button{padding:0;border:0;background:none;font:700 14px/1.3 var(--f-display);color:var(--blue);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* groups and cards */
+/* groups flow on a 4-column grid: each takes as many columns as it has decks, so two small groups share a row */
+.ix-results{--cols:4;margin-top:14px;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:40px 22px}
+.ix-group{grid-column:span min(var(--n),var(--cols));scroll-margin-top:150px;min-width:0}
+.ix-group .ix-grid{grid-template-columns:repeat(min(var(--n),var(--cols)),minmax(0,1fr))}
+.ix-flat,.ix-empty,.is-list .ix-group{grid-column:1/-1}
+.ix-gh{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.ix-gh h2{margin:0;font:800 22px/1.2 var(--f-display);color:var(--ink);letter-spacing:-.01em}
+.ix-gn{font:700 12px/1 var(--f-display);padding:4px 8px;border-radius:999px;background:var(--blue-050);color:var(--blue)}
+.ix-gh p{margin:0;flex-basis:100%;font-size:14.5px;color:#6C6C80}
+.ix-grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:22px}
+.ix-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;contain:layout paint;box-shadow:0 1px 2px rgba(31,31,61,.05),0 10px 24px -16px rgba(31,31,61,.22);display:flex;flex-direction:column;
+  transition:border-color .25s var(--ease)}
+.ix-card:hover{border-color:var(--blue-300)}
+.ix-thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#0F2350}
+.ix-thumb img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s var(--ease)}
+.ix-thumb-2{opacity:0;will-change:opacity}
+.ix-card:hover .ix-thumb-2,.ix-card:focus-within .ix-thumb-2{opacity:1}
+.ix-len{position:absolute;right:10px;bottom:10px;padding:5px 8px;border-radius:8px;background:rgba(15,35,80,.82);color:#fff;font:700 12px/1 var(--f-display)}
+.ix-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.ix-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 6px;font:700 11.5px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase}
+.ix-cat{color:var(--blue)}
+.ix-sl{color:#6C6C80}
+.ix-cat+.ix-sl::before{content:"\00b7";margin-right:8px}
+.ix-group .ix-cat{display:none}
+.ix-group .ix-sl::before{content:none}
+.ix-body h3{margin:2px 0 6px;font:800 23px/1.18 var(--f-display);color:var(--ink);letter-spacing:-.02em}
+.ix-body h3 a{text-decoration:none}
+.ix-body h3 a:hover{color:var(--blue)}
+.ix-body h3 a:focus-visible{outline:2px solid var(--blue-300);outline-offset:2px;border-radius:4px}
+.ix-desc{margin:0;font-size:15px;line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.ix-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.ix-tags:empty{display:none}
+.ix-tag{font:600 12px/1 var(--f-display);padding:5px 8px;border-radius:999px;background:var(--alt);border:1px solid var(--line);color:var(--body)}
+
+/* the card's actions: one row that never wraps; on tight cards the link icons go, then "loop", then some padding */
+.ix-body{container-type:inline-size}
+.ix-acts{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;margin-top:auto;padding-top:16px}
+.ix-btn{display:inline-flex;align-items:center;flex:none;padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:#fff;text-decoration:none;font:700 13px/1 var(--f-display);color:var(--ink);white-space:nowrap;transition:border-color .2s,background .2s}
+.ix-btn:hover{border-color:var(--blue-300)}
+.ix-btn--p{background:var(--blue);border-color:var(--blue);color:#fff}
+.ix-btn--p:hover{background:var(--blue-700);border-color:var(--blue-700)}
+.ix-btn--t{border-color:transparent;color:var(--blue)}
+
+/* list view: one row per deck */
+.ix-results.is-list .ix-grid{grid-template-columns:1fr;gap:12px}
+.is-list .ix-card{flex-direction:row;align-items:stretch;border-radius:16px}
+.is-list .ix-thumb{flex:none;width:240px;aspect-ratio:auto;min-height:135px}
+.is-list .ix-body{padding:16px 20px}
+.is-list .ix-body h3{font-size:20px}
+.is-list .ix-desc{-webkit-line-clamp:2;line-clamp:2}
+.is-list .ix-tags{margin-top:8px}
+.is-list .ix-acts{padding-top:12px}
+
+.ix-empty{padding:56px 24px;text-align:center;border-radius:20px;border:1px dashed var(--blue-100);background:#fff}
+.ix-empty b{font:800 20px/1.2 var(--f-display);color:var(--ink)}
+.ix-empty p{margin:8px 0 0}
+
+/* how to present: shortcuts, then tips and TV set-ups folded */
+.ix-guide{margin:56px 0 0;scroll-margin-top:24px;content-visibility:auto;contain-intrinsic-size:auto 640px}
+.ix-guide>h2{margin:0;font:800 26px/1.2 var(--f-display);color:var(--ink);letter-spacing:-.01em}
+.ix-keys{list-style:none;margin:14px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
+.ix-keys li{display:flex;align-items:center;gap:6px;font-size:14px}
+.ix-guide kbd{border-color:var(--line);background:#fff;color:var(--ink);box-shadow:0 2px 0 var(--line)}
+.ix-guide details{border-radius:18px;background:#fff;border:1px solid var(--line)}
+.ix-guide details+details{margin-top:12px}
+.ix-guide summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;font:800 18px/1.2 var(--f-display);color:var(--ink);cursor:pointer;list-style:none}
+.ix-guide summary::-webkit-details-marker{display:none}
+.ix-guide summary::after{content:"";width:9px;height:9px;flex:none;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:translateY(-3px) rotate(45deg);transition:transform .3s var(--ease)}
+.ix-guide details[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+.ix-guide summary:focus-visible{outline:2px solid var(--blue-300);outline-offset:2px;border-radius:18px}
+.ix-tips ul{margin:0;padding:0 22px 20px;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 30px}
+.ix-tips li{font-size:15.5px}
+.ix-tips b{color:var(--ink);font-family:var(--f-display)}
+.ix-how>:not(summary){margin-left:22px;margin-right:22px}
+.ix-how-lead{margin-top:0;margin-bottom:14px;font-size:15.5px}
+.ix-how-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ix-how article{padding:16px 16px 14px;border-radius:14px;background:var(--alt);border:1px solid var(--line)}
+.ix-how article b{display:block;font:800 16px/1.25 var(--f-display);color:var(--ink)}
+.ix-how article p{margin:6px 0 0;font-size:14.5px;line-height:1.5}
+.ix-how-act{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px;margin-bottom:20px}
+.ix-how-act .ix-btn{padding:11px 16px}
+.ix-how-act .ix-btn[disabled]{opacity:.6;cursor:progress}
+.ix-how-st{font-size:14px;color:#137A4A}
+.ix-foot{margin-top:48px;padding:26px 0 34px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.ix-foot .ix-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ix-foot a{color:var(--blue);font-weight:600;text-decoration:none}
+
+@media (max-width:1100px){.ix-results{--cols:2}.ix-how-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .ix-hero-row{flex-direction:column;align-items:flex-start;gap:22px}
+  .ix-end{margin-left:0}
+  .ix-q{max-width:none;flex-basis:100%}
+  .ix-bar{position:static}
+}
+@media (max-width:680px){
+  .ix-wrap{padding:0 16px}
+  .ix-hero{padding:22px 0 56px}
+  .ix-stats{width:100%}
+  .ix-stats div{min-width:0;flex:1;padding:12px}
+  .ix-stats dd{font-size:28px}
+  .ix-results{--cols:1}
+  .ix-tabs{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+  .ix-tabs::-webkit-scrollbar{display:none}
+  .ix-bar-2{flex-direction:column;align-items:flex-start}
+  .ix-chips{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+  .is-list .ix-card{flex-direction:column}
+  .is-list .ix-thumb{width:100%;aspect-ratio:16/9;min-height:0}
+  .ix-tips ul,.ix-how-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Share: a link to one presentation on its own */
+button.ix-btn{cursor:pointer}
+.ix-more{display:inline-flex;flex:none}
+.ix-more .ix-btn{padding:9px 7px}
+.ix-btn--t .ic{width:14px;height:14px;margin-right:5px;flex:none}
+@container (max-width:315px){.ix-acts .ix-btn--t .ic{display:none}}
+@container (max-width:281px){.ix-kl{display:none}}
+@container (max-width:254px){.ix-acts{gap:4px}.ix-acts .ix-btn{padding:9px 9px}.ix-acts .ix-more .ix-btn{padding:9px 5px}}
+.ix-share[aria-expanded=true]{border-color:var(--blue-100);background:var(--blue-050)}
+.ix-pop{position:absolute;z-index:40;width:min(410px,calc(100vw - 24px));padding:16px 18px 14px;border-radius:16px;background:#fff;border:1px solid var(--line);
+  box-shadow:0 2px 6px rgba(31,31,61,.06),0 30px 60px -24px rgba(31,31,61,.45);animation:ixPop .2s var(--ease)}
+@keyframes ixPop{from{opacity:0;transform:translateY(4px)}}
+.ix-pop-h{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ix-pop-h b{font:800 17px/1.2 var(--f-display);color:var(--ink)}
+.ix-pop-x{width:30px;height:30px;flex:none;border:0;border-radius:8px;background:none;color:var(--muted);font-size:22px;line-height:1;cursor:pointer}
+.ix-pop-x:hover,.ix-pop-x:focus-visible{background:var(--alt);color:var(--ink);outline:none}
+.ix-pop-t{margin:6px 0 12px;font-size:14px;line-height:1.45}
+.ix-pop-f{display:flex;gap:8px}
+.ix-pop-f input{flex:1;min-width:0;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--alt);font:500 13.5px/1.2 var(--f-body);color:var(--ink)}
+.ix-pop-f input:focus{outline:2px solid var(--blue-300);outline-offset:0;background:#fff}
+.ix-pop-f .ix-btn{white-space:nowrap}
+.ix-pop-a{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin:12px 0 0;font:700 14px/1 var(--f-display)}
+.ix-pop-a a{color:var(--blue);text-decoration:none}
+.ix-pop-a a:hover,.ix-pop-a a:focus-visible{text-decoration:underline}
+.ix-pop-s{margin-left:auto;font:600 13px/1 var(--f-body);color:#137A4A}
+@media (prefers-reduced-motion:reduce){.ix-pop{animation:none}}
+
+.ix-thumb{background:#EAF0FB}
+.ix-grp-is .ix-gn{background:#F7E9EE;color:#9C3B5B}
+.ix-st{display:inline-flex;align-items:center;gap:6px}
+.ix-st::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c,#137A4A)}
+.ix-cl{color:var(--blue)}
+.ix-grp-is .ix-cl{color:#9C3B5B}
+.ix-facts{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.ix-facts span{font:600 12px/1 var(--f-display);padding:6px 8px;border-radius:8px;background:var(--blue-050);color:var(--blue-700)}
+.ix-grp-is .ix-facts span{background:#F7E9EE;color:#7E2E49}
+.ix-desc{-webkit-line-clamp:4;line-clamp:4}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="all-schedules.html"><img src="https://technextsg.github.io/technext-marketing-hub/assets/logo/technext-wide-blue.png" alt="TechNext" width="150" height="30"><b>Scheduling Plans</b></a>
-    <nav class="nav" aria-label="Clients">
-      <a href="#technext">TechNext</a>
-      <a href="#isabelle">Isabelle</a>
-      <a href="#more">Also handy</a>
-      <a class="cta" href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
-    </nav>
+<header class="ix-hero">
+  <div class="ix-wrap">
+    <div class="ix-top">
+      <a class="ix-logo" href="https://technext.asia/" target="_blank" rel="noopener"><img src="https://technextsg.github.io/technext-presentations/assets/img/logo-horizontal-white.png" alt="TechNext" width="200" height="40"></a>
+      <a class="ix-guide-link" href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
+    </div>
+    <div class="ix-hero-row">
+      <div>
+        <span class="ix-kicker">scheduling plans</span>
+        <h1>Every client schedule, <span>one click away.</span></h1>
+        <p class="ix-lead">The posting plans for each client in one place. Open a schedule and tap any day for its posts, times and captions.</p>
+      </div>
+      <dl class="ix-stats">
+        <div><dt>plans</dt><dd>3</dd></div>
+        <div><dt>clients</dt><dd>2</dd></div>
+        <div><dt>posts &amp; videos</dt><dd>523</dd></div>
+      </dl>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <span class="kicker"><i></i>Marketing team &middot; internal</span>
-    <h1>Every scheduling plan, <em>one page.</em></h1>
-    <p>Every client's posting schedule, with links to the parts you open most. Bookmark this page instead of digging through Drive and old chats. <span class="hand">TechNext + Isabelle</span></p>
-    <label class="search" for="q">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Search plans: posts, Nexi, ads, YouTube, Shorts, events&hellip;" autocomplete="off">
-      <kbd>/</kbd>
-    </label>
-    <div class="chips" role="group" aria-label="Filter by client">
-      <button class="chip" data-c="all" aria-pressed="true">All clients</button>
-      <button class="chip" data-c="technext" aria-pressed="false">TechNext</button>
-      <button class="chip" data-c="isabelle" aria-pressed="false">Isabelle &middot; BHD Asia / HummingBeing</button>
-    </div>
-  </div>
-</section>
-
-<section id="technext" class="client">
-  <div class="wrap">
-    <div class="sec-head"><span class="n">1</span><h2>TechNext</h2><p>Social posts, Nexi Explains, TikTok and paid ads.</p><span class="count">1 plan</span></div>
-    <div class="grid">
-      <article class="app rv" data-tags="technext social posts facebook instagram linkedin nexi explains youtube tiktok posters paid ads holiday halloween christmas new year lunar valentine buffer captions">
-        <div class="shot"><img src="img-schedules/technext-schedule.jpg" alt="TechNext Posting Schedule page" loading="lazy" width="960" height="600">
-          <div class="tag"><span class="badge tn">TechNext</span><span class="badge part">Oct + Dec in Buffer</span></div></div>
-        <div class="body">
-          <span class="num">01 &middot; 11 OCT 2026 &ndash; 28 FEB 2027</span>
-          <h3><a href="https://technextmarketing.github.io/technext-plans/schedule.html" target="_blank" rel="noopener">TechNext Posting Schedule</a></h3>
-          <p>Every TechNext post, video and ad on tap-through calendars: two social posts a day, the Nexi Explains premieres, TikToks and posters, holiday posts and the two monthly Facebook ads.</p>
-          <div class="stats"><span><b>280</b> social posts</span><span><b>24</b> holiday</span><span><b>40</b> YouTube</span><span><b>37</b> TikTok</span><span><b>40</b> posters</span><span><b>6</b> ad creatives</span></div>
-          <div class="use"><b>Channels</b><span>Facebook, Instagram, LinkedIn, YouTube, TikTok, Facebook ads</span></div>
-          <div class="use"><b>Status</b><span>October and December posts are queued in Buffer. November, January and February are planned only. Tap a post for its times and copy-ready captions.</span></div>
-          <div class="links">
-            <a class="btn p" href="https://technextmarketing.github.io/technext-plans/schedule.html" target="_blank" rel="noopener">Open schedule</a>
-            <a class="btn" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-social" target="_blank" rel="noopener">Social posts</a>
-            <a class="btn" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-nexi" target="_blank" rel="noopener">Nexi + TikTok</a>
-            <a class="btn" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-ads" target="_blank" rel="noopener">Paid ads</a>
-            <a class="btn" href="https://technextmarketing.github.io/technext-plans/schedule.html#key-dates" target="_blank" rel="noopener">Key dates</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="isabelle" class="client">
-  <div class="wrap">
-    <div class="sec-head isa"><span class="n">2</span><h2>Isabelle</h2><p>BHD Asia &middot; HummingBeing: podcast videos, Shorts, reposts and event images.</p><span class="count">2 plans</span></div>
-    <div class="grid">
-      <article class="app isa rv" data-tags="isabelle bhd asia hummingbeing youtube podcast shorts sara marie saymara reposts facebook linkedin tiktok video buffer">
-        <div class="shot"><img src="img-schedules/isabelle-youtube.jpg" alt="Isabelle YouTube Posting Schedule page" loading="lazy" width="960" height="600">
-          <div class="tag"><span class="badge is">Isabelle</span><span class="badge live">Queued</span></div></div>
-        <div class="body">
-          <span class="num">02 &middot; 14 OCT &ndash; 25 DEC 2026</span>
-          <h3><a href="https://technextmarketing.github.io/isabelle-youtube-schedule/" target="_blank" rel="noopener">YouTube Posting Schedule</a></h3>
-          <p>The video plan: the Sara Marie and Saymara podcast episodes, Sara Marie Shorts 1&ndash;12, then reposts of Saymara, Sara Marie, Alex, Simba and Isabelle clips on the BHD Asia Facebook page.</p>
-          <div class="stats"><span><b>2</b> podcasts</span><span><b>12</b> Shorts</span><span><b>39</b> Facebook reposts</span><span><b>7:00 PM</b> Manila</span></div>
-          <div class="use"><b>Channels</b><span>YouTube, BHD Asia Facebook, bhd-asia LinkedIn; TikTok planned</span></div>
-          <div class="use"><b>Status</b><span>Shorts set in YouTube Studio; Shorts and reposts queued in Buffer through 4 Dec. No TikTok account in Buffer yet.</span></div>
-          <div class="links">
-            <a class="btn p" href="https://technextmarketing.github.io/isabelle-youtube-schedule/" target="_blank" rel="noopener">Open schedule</a>
-            <a class="btn" href="https://www.youtube.com/watch?v=Xlipz4fDhRg" target="_blank" rel="noopener">Sara Marie episode</a>
-          </div>
-        </div>
-      </article>
-      <article class="app isa rv" data-tags="isabelle bhd asia hummingbeing images posters event sara marie aun ali ania zielinska tre certification 2027 facebook linkedin">
-        <div class="shot"><img src="img-schedules/isabelle-images.jpg" alt="Isabelle Image Posting Schedule page" loading="lazy" width="960" height="600">
-          <div class="tag"><span class="badge is">Isabelle</span><span class="badge plan">Plan only</span></div></div>
-        <div class="body">
-          <span class="num">03 &middot; 15 OCT &ndash; 31 DEC 2026</span>
-          <h3><a href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html" target="_blank" rel="noopener">Image Posting Schedule</a></h3>
-          <p>Every finished HummingBeing event image, dated so each workshop builds up to its day and ends with a &ldquo;tonight&rdquo; post. 2027 certification posts fill the free days until the early-bird deadline on 31 Dec.</p>
-          <div class="stats"><span><b>43</b> image posts</span><span><b>4</b> events</span><span><b>1</b> a day max</span><span><b>12:00 PM</b></span></div>
-          <div class="use"><b>Channels</b><span>BHD Asia Facebook, bhd-asia LinkedIn (HummingBeing Facebook and Instagram once unlocked)</span></div>
-          <div class="use"><b>Status</b><span>Plan only; nothing queued in Buffer yet.</span></div>
-          <div class="links">
-            <a class="btn p" href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html" target="_blank" rel="noopener">Open schedule</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="empty" id="empty">No plan matches. Try &ldquo;Nexi&rdquo;, &ldquo;Shorts&rdquo; or &ldquo;ads&rdquo;.</div></div>
-
-<section id="more">
-  <div class="wrap">
-    <div class="sec-head"><span class="n">3</span><h2>Also handy</h2><p>Drive copies and the related plans.</p></div>
-    <div class="rows">
-      <a class="row rv" href="https://technextmarketing.github.io/technext-plans/marketing-plan.html" target="_blank" rel="noopener">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
-        <span><b>TechNext marketing plan Q4</b><span>The plan behind the TechNext schedule: goals, channels and budget.</span></span>
-      </a>
-      <div class="row rv">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-        <span><b>Drive: TechNext schedule</b><span><code>02. TechNext Folder\04. Buffer API\Posting Schedule (2026-10-11 to 2027-01-08)</code> &middot; xlsx + HTML copy</span></span>
+<main class="ix-wrap">
+  <div class="ix-bar" role="search" aria-label="Find a schedule">
+    <div class="ix-bar-1">
+      <label class="ix-q"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="currentColor" fill-opacity=".2" stroke="none"/><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg><input type="search" placeholder="Search the schedules" aria-label="Search the schedules" data-q><kbd>/</kbd></label>
+      <div class="ix-tabs" role="group" aria-label="Client"><button type="button" class="ix-tab" data-g="" aria-pressed="true">All<span>3</span></button><button type="button" class="ix-tab" data-g="tn" aria-pressed="false">TechNext<span>1</span></button><button type="button" class="ix-tab" data-g="is" aria-pressed="false">Isabelle<span>2</span></button></div>
+      <div class="ix-end">
+        <div class="ix-view" role="group" aria-label="View"><button type="button" data-view="grid" aria-pressed="true" aria-label="Grid"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button><button type="button" data-view="list" aria-pressed="false" aria-label="List"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button></div>
       </div>
-      <div class="row rv">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-        <span><b>Drive: Isabelle schedules</b><span><code>My Drive\Isabelle\99. Trackers &amp; Reports</code> &middot; YouTube and image plan HTML copies</span></span>
-      </div>
-      <a class="row rv" href="https://technextsg.github.io/technext-marketing-hub/" target="_blank" rel="noopener">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
-        <span><b>Marketing Hub</b><span>Every TechNext marketing tool: decks, Drip Studio, paid ads, brand guide.</span></span>
-      </a>
     </div>
   </div>
-</section>
+  <p class="ix-count" role="status" aria-live="polite"><span data-count>All 3 schedules</span><button type="button" class="ix-clear" data-clear hidden>Clear filters</button></p>
+  <div class="ix-results" data-results>
 
-<footer>
-  <div class="wrap">
-    <span>TechNext Pte. Ltd. &middot; Scheduling Plans &middot; internal use</span>
+  <section class="ix-group" data-g="tn" style="--n:1" aria-labelledby="g-tn">
+    <header class="ix-gh"><h2 id="g-tn">TechNext</h2><span class="ix-gn">1</span><p>Social posts, Nexi Explains and paid ads.</p></header>
+    <div class="ix-grid">
+    <article class="ix-card" data-words="technext posting schedule social posts facebook instagram linkedin nexi explains youtube tiktok posters holiday halloween christmas new year lunar valentine paid ads buffer captions">
+      <a class="ix-thumb" href="https://technextmarketing.github.io/technext-plans/schedule.html" target="_blank" rel="noopener" aria-label="Open TechNext Posting Schedule" tabindex="-1">
+        <img src="img-schedules/technext-schedule.jpg" alt="TechNext Posting Schedule: Every post, every channel." width="960" height="540" loading="lazy">
+        <img class="ix-thumb-2" src="img-schedules/technext-schedule-2.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+        <span class="ix-len">11 Oct &ndash; 28 Feb</span>
+      </a>
+      <div class="ix-body">
+        <p class="ix-meta"><span class="ix-cl">TechNext</span><span class="ix-sl ix-st" style="--c:#B45309">Oct + Dec in Buffer</span></p>
+        <h3><a href="https://technextmarketing.github.io/technext-plans/schedule.html" target="_blank" rel="noopener">TechNext Posting Schedule</a></h3>
+        <p class="ix-desc">Two social posts a day on Facebook, Instagram and LinkedIn, the Nexi Explains YouTube premieres, TikToks and posters, holiday posts and the two monthly Facebook ads. Tap a post for its times and captions.</p>
+        <p class="ix-facts"><span>280 posts</span><span>24 holiday</span><span>40 YouTube</span><span>37 TikTok</span><span>40 posters</span><span>6 ads</span></p>
+        <div class="ix-acts">
+          <a class="ix-btn ix-btn--p" href="https://technextmarketing.github.io/technext-plans/schedule.html" target="_blank" rel="noopener">Open</a>
+          <a class="ix-btn ix-btn--t" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-social" target="_blank" rel="noopener">Posts</a>
+          <a class="ix-btn ix-btn--t" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-nexi" target="_blank" rel="noopener">Nexi</a>
+          <a class="ix-btn ix-btn--t" href="https://technextmarketing.github.io/technext-plans/schedule.html#cal-ads" target="_blank" rel="noopener">Ads</a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section class="ix-group ix-grp-is" data-g="is" style="--n:2" aria-labelledby="g-is">
+    <header class="ix-gh"><h2 id="g-is">Isabelle</h2><span class="ix-gn">2</span><p>BHD Asia &middot; HummingBeing: videos and event images.</p></header>
+    <div class="ix-grid">
+    <article class="ix-card" data-words="isabelle bhd asia hummingbeing youtube podcast shorts sara marie saymara reposts alex simba facebook linkedin tiktok video buffer">
+      <a class="ix-thumb" href="https://technextmarketing.github.io/isabelle-youtube-schedule/" target="_blank" rel="noopener" aria-label="Open YouTube Posting Schedule" tabindex="-1">
+        <img src="img-schedules/isabelle-youtube.jpg" alt="YouTube Posting Schedule: What goes live on YouTube, day by day." width="960" height="540" loading="lazy">
+        <img class="ix-thumb-2" src="img-schedules/isabelle-youtube-2.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+        <span class="ix-len">14 Oct &ndash; 25 Dec</span>
+      </a>
+      <div class="ix-body">
+        <p class="ix-meta"><span class="ix-cl">Isabelle</span><span class="ix-sl ix-st">Queued</span></p>
+        <h3><a href="https://technextmarketing.github.io/isabelle-youtube-schedule/" target="_blank" rel="noopener">YouTube Posting Schedule</a></h3>
+        <p class="ix-desc">The Sara Marie and Saymara podcast episodes, Sara Marie Shorts 1&ndash;12, then clip reposts on the BHD Asia Facebook page, all at 7:00 PM. TikTok is planned only.</p>
+        <p class="ix-facts"><span>2 podcasts</span><span>12 Shorts</span><span>39 reposts</span></p>
+        <div class="ix-acts">
+          <a class="ix-btn ix-btn--p" href="https://technextmarketing.github.io/isabelle-youtube-schedule/" target="_blank" rel="noopener">Open</a>
+          <a class="ix-btn ix-btn--t" href="https://technextmarketing.github.io/isabelle-youtube-schedule/#rlist" target="_blank" rel="noopener">Reposts</a>
+        </div>
+      </div>
+    </article>
+    <article class="ix-card" data-words="isabelle bhd asia hummingbeing image posting plan event images posters sara marie aun ali ania zielinska tre certification 2027 facebook linkedin">
+      <a class="ix-thumb" href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html" target="_blank" rel="noopener" aria-label="Open Image Posting Schedule" tabindex="-1">
+        <img src="img-schedules/isabelle-images.jpg" alt="Image Posting Schedule: Event images, one post at a time." width="960" height="540" loading="lazy">
+        <img class="ix-thumb-2" src="img-schedules/isabelle-images-2.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+        <span class="ix-len">15 Oct &ndash; 31 Dec</span>
+      </a>
+      <div class="ix-body">
+        <p class="ix-meta"><span class="ix-cl">Isabelle</span><span class="ix-sl ix-st" style="--c:#B42318">Plan only</span></p>
+        <h3><a href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html" target="_blank" rel="noopener">Image Posting Schedule</a></h3>
+        <p class="ix-desc">Every HummingBeing event image, dated so each workshop builds up to its day. 2027 certification posts fill the free days. One image a day at most, at 12:00 PM.</p>
+        <p class="ix-facts"><span>43 images</span><span>4 events</span><span>12:00 PM</span></p>
+        <div class="ix-acts">
+          <a class="ix-btn ix-btn--p" href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html" target="_blank" rel="noopener">Open</a>
+          <a class="ix-btn ix-btn--t" href="https://technextmarketing.github.io/isabelle-youtube-schedule/images.html#list" target="_blank" rel="noopener">Captions</a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <div class="ix-empty" data-empty hidden><b>No schedule matches.</b><p>Try &ldquo;Nexi&rdquo;, &ldquo;Shorts&rdquo; or &ldquo;images&rdquo;, or <button type="button" data-clear>clear the filters</button>.</p></div>
+  </div>
+</main>
+
+<footer class="ix-foot">
+  <div class="ix-wrap">
+    <span>TechNext Pte. Ltd. &middot; Scheduling plans &middot; internal &middot; updated 14 Oct 2026</span>
     <a href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
-    <span class="right">Updated 14 Oct 2026 &middot; times GMT+8</span>
   </div>
 </footer>
-
 <script>
 (function(){
-  var q=document.getElementById("q"),client="all",cards=[].slice.call(document.querySelectorAll(".app"));
-  cards.forEach(function(c){c._t=(c.getAttribute("data-tags")+" "+c.textContent).toLowerCase()});
+  var q=document.querySelector("[data-q]"),res=document.querySelector("[data-results]"),g="",cnt=document.querySelector("[data-count]"),clr=document.querySelector(".ix-count [data-clear]"),empty=document.querySelector("[data-empty]");
   function apply(){
-    var s=q.value.trim().toLowerCase(),any=0;
-    [].forEach.call(document.querySelectorAll(".client"),function(sec){
-      var n=0,okC=client==="all"||sec.id===client;
-      [].forEach.call(sec.querySelectorAll(".app"),function(c){var ok=okC&&(!s||c._t.indexOf(s)>-1);c.classList.toggle("is-hidden",!ok);if(ok)n++});
-      sec.classList.toggle("is-hidden",!n);any+=n});
-    document.getElementById("empty").classList.toggle("show",!any);
+    var s=q.value.trim().toLowerCase(),n=0;
+    [].forEach.call(document.querySelectorAll(".ix-group"),function(sec){
+      var k=0,okG=!g||sec.getAttribute("data-g")===g;
+      [].forEach.call(sec.querySelectorAll(".ix-card"),function(c){var ok=okG&&(!s||(c.getAttribute("data-words")+" "+c.textContent).toLowerCase().indexOf(s)>-1);c.hidden=!ok;if(ok)k++});
+      sec.hidden=!k;sec.style.setProperty("--n",Math.max(k,1));n+=k});
+    cnt.textContent=(!g&&!s)?"All 3 schedules":n+" of 3 schedules";clr.hidden=!g&&!s;empty.hidden=!!n;
   }
   q.addEventListener("input",apply);
-  document.querySelector(".chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;client=b.getAttribute("data-c");
+  document.querySelector(".ix-tabs").addEventListener("click",function(e){var b=e.target.closest(".ix-tab");if(!b)return;g=b.getAttribute("data-g");
     [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",x===b)});apply()});
-  document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}if(e.key==="Escape"&&q.value){q.value="";apply()}});
-  var io="IntersectionObserver" in window?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{rootMargin:"0px 0px -40px 0px"}):null;
-  [].forEach.call(document.querySelectorAll(".rv"),function(el){io?io.observe(el):el.classList.add("in")});
+  [].forEach.call(document.querySelectorAll("[data-clear]"),function(b){b.addEventListener("click",function(){q.value="";g="";
+    [].forEach.call(document.querySelectorAll(".ix-tab"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-g")==="")});apply()})});
+  document.querySelector(".ix-view").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",x===b)});res.classList.toggle("is-list",b.getAttribute("data-view")==="list");
+    try{localStorage.setItem("sp-view",b.getAttribute("data-view"))}catch(x){}});
+  try{if(localStorage.getItem("sp-view")==="list")document.querySelector('.ix-view [data-view=list]').click()}catch(x){}
+  document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}});
 })();
 </script>
 </body>
