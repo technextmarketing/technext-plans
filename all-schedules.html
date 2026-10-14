@@ -232,7 +232,7 @@ function drawCal(){
   if(view==="ag"){
     var h="";for(var d=1;d<=days;d++){var k=key(y,m,d),L=(byDay[k]||[]).filter(vis);if(!L.length)continue;var dt=pd(k);
       h+='<div class="aday'+(k===today?" today":"")+'"><div class="when"><b>'+d+' '+MON[m]+'</b><small>'+DN[dt.getDay()]+' &middot; '+L.length+' item'+(L.length>1?"s":"")+'</small></div><div class="aitems">'+
-        L.map(function(e){var s=S[e.s];return '<button class="ai" style="--c:'+s.col+'" data-i="'+e.i+'">'+(e.th?'<img alt="" loading="lazy" src="data:image/jpeg;base64,'+D.th[e.th]+'">':'')+
+        L.map(function(e){var s=S[e.s];return '<button class="ai" style="--c:'+s.col+'" data-i="'+e.i+'">'+(e.th?'<img alt="" loading="lazy" src="data:image/jpeg;base64,'+D.th[e.th]+'">':e.yt?'<img alt="" loading="lazy" src="https://i.ytimg.com/vi/'+e.yt+'/mqdefault.jpg">':'')+
           '<div class="tx"><b>'+esc(e.t)+'</b><small>'+esc(s.n)+' &middot; '+(e.tm[0]?esc(e.tm[0][1]):"")+' &middot; '+STL[e.st]+'</small></div></button>'}).join("")+'</div></div>'}
     w.innerHTML='<div class="agenda">'+(h||'<div style="padding:20px;color:#7C869C">Nothing scheduled this month for the current filters.</div>')+'</div>';return}
   var start=(new Date(y,m,1).getDay()+6)%7,h='<div class="cal"><div class="dow">'+["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(function(x){return"<div>"+x+"</div>"}).join("")+'</div><div class="grid">';
