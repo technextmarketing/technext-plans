@@ -138,6 +138,7 @@ main{min-width:0;padding:16px 20px 40px}
 .ev:hover{background:color-mix(in srgb,var(--c) 17%,#fff)}
 .ev.p{background:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 35%,#fff);border-left-style:dashed}
 .ev.s{background:var(--badbg)}
+.ev.m{background:var(--warnbg)}
 .ev .tm{font:700 10px/1 var(--f-d);color:var(--ink-3);flex:none;min-width:30px}
 .ev .tt{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500}
 .ev .tg{font:800 9px/1 var(--f-d);color:var(--c);flex:none}
@@ -175,6 +176,7 @@ main{min-width:0;padding:16px 20px 40px}
 .lday span{font-size:12px;color:var(--ink-3)}
 .lday.today b{color:var(--blue)}
 .row{display:grid;grid-template-columns:70px 44px minmax(0,1fr) 150px 110px 96px;align-items:center;gap:12px;padding:8px 14px;border:0;border-bottom:1px solid var(--line-2);background:#fff;width:100%;text-align:left}
+.row .tcc{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row:hover{background:#FAFBFE}
 .row.sel{background:var(--blue-050)}
 .row .tm{font:700 12px/1 var(--f-d);color:var(--ink-2)}
@@ -185,7 +187,7 @@ main{min-width:0;padding:16px 20px 40px}
 .tchip i{width:8px;height:8px;border-radius:3px;background:var(--c);flex:none}
 .tchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .st{display:inline-flex;align-items:center;gap:5px;font:700 11px/1 var(--f-d);padding:5px 8px;border-radius:999px;white-space:nowrap}
-.st.q{background:var(--okbg);color:var(--ok)}.st.p{background:var(--warnbg);color:var(--warn)}.st.s{background:var(--badbg);color:var(--bad)}
+.st.q{background:var(--okbg);color:var(--ok)}.st.p{background:var(--warnbg);color:var(--warn)}.st.s{background:var(--badbg);color:var(--bad)}.st.m{background:var(--warnbg);color:var(--warn)}.st.x{background:var(--alt,#f2f3f5);color:var(--ink-3,#6b7280)}.st.h{background:#EEF0F4;color:#5B6372}.ev.h,.card.h,.row.h{opacity:.55}
 .noresult{padding:40px 16px;text-align:center;color:var(--ink-3);background:#fff;border:1px dashed var(--line);border-radius:var(--r)}
 
 /* drawer */
@@ -342,6 +344,8 @@ main{min-width:0;padding:16px 20px 40px}
 </div>
 
 <template id="tn-notes">
+<h3>Postponed (23 Oct 2026)</h3>
+<p>Every normal post from 23 Oct 2026 to 28 Feb 2027 is on hold (grey, &ldquo;Postponed&rdquo;), holiday posts included. In Buffer they were moved to Drafts with their date, caption and image kept, so they can be put back. Nexi Explains posters, TikToks and premieres keep running as planned.</p>
 <h3>When posts go out</h3>
 <p>LinkedIn goes out around the commute. Facebook and Instagram go mid-morning and after dinner. Weekends start later.</p>
 <table><tr><th>Weekdays</th><th>Morning</th><th>Evening</th></tr><tr><td>LinkedIn</td><td>8:00 AM</td><td>5:30 PM</td></tr><tr><td>Facebook</td><td>9:00 AM</td><td>8:00 PM</td></tr><tr><td>Instagram</td><td>9:30 AM</td><td>8:30 PM</td></tr></table>
@@ -382,7 +386,7 @@ window.PAGE={"id": "tn", "title": "TechNext Posting Schedule", "sub": null, "int
 window.A_TN=function(){
   var D=new Set(typeof DONE!=="undefined"?DONE:[]),ND=new Set(typeof NDONE!=="undefined"?NDONE:[]);
   function im(f){return IMGS[f]?"data:image/jpeg;base64,"+IMGS[f]:NTH[f]?"data:image/jpeg;base64,"+NTH[f]:""}
-  var items=[];
+  var items=[],PPF="2026-10-23"; // owner 23 Oct: normal posts from today to Feb 2027 postponed (Buffer drafts); Nexi Explains keeps running
   POSTS.forEach(function(p){
     var ty=p.s==="NX"?"nxp":p.s==="HOL"?"hol":"post",pl=[];
     if(p.fb)pl.push({k:"fb",time:p.fb,cap:p.cfb});
@@ -390,7 +394,7 @@ window.A_TN=function(){
     if(p.li&&p.cli)pl.push({k:"li",time:p.li,cap:p.cli});
     items.push({d:p.d,type:ty,topic:ty==="nxp"?null:p.ty,tag:p.s==="NX"?p.tag:"",title:p.t,
       sub:(p.s==="NX"?"Episode poster":"#"+p.n)+" \u00b7 "+p.ty,img:im(p.img),pl:pl,
-      st:(ty==="nxp"||D.has(p.d))?"q":"p",meta:[["Post",p.s==="NX"?p.tag:"#"+p.n],["Image",p.img]]});
+      st:ty!=="nxp"&&p.d>=PPF?"h":(ty==="nxp"||D.has(p.d))?"q":"p",meta:[["Post",p.s==="NX"?p.tag:"#"+p.n],["Image",p.img]]});
   });
   NEXI.forEach(function(n){
     var hs=n.code.indexOf("HS")===0;
@@ -443,7 +447,7 @@ function combine(){
   return out;
 }
 var PL={fb:{n:"Facebook",a:"FB",c:"#3167CA"},ig:{n:"Instagram",a:"IG",c:"#B4407A"},li:{n:"LinkedIn",a:"in",c:"#1E6FA8"},yt:{n:"YouTube",a:"YT",c:"#D02B2B"},tt:{n:"TikTok",a:"TT",c:"#23253A"}};
-var ST={q:"Queued",p:"Planned",s:"To set up"};
+var ST={s:"To set up",m:"To move",q:"Queued",p:"Planned",h:"Postponed",x:"Posted"};
 var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],MONL=["January","February","March","April","May","June","July","August","September","October","November","December"],DN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 function pad(n){return n<10?"0"+n:""+n}
 function key(dt){return dt.getFullYear()+"-"+pad(dt.getMonth()+1)+"-"+pad(dt.getDate())}
@@ -501,7 +505,7 @@ function drawFacets(){
   $("b-topic").hidden=!TPK.length;
   if(TPK.length)facet("topic",TPK,function(k){return C.topics[k].n},function(k){return C.topics[k].c},function(k){return IT.filter(function(e){return e.topic===k}).length});
   facet("plat",PK,function(k){return PL[k].n},function(k){return PL[k].c},function(k){return IT.filter(function(e){return (e.pl||[]).some(function(p){return p.k===k})}).length});
-  facet("st",SK,function(k){return ST[k]},function(k){return {q:"#1F8A5B",p:"#B0650B",s:"#B4323A"}[k]},function(k){return IT.filter(function(e){return e.st===k}).length});
+  facet("st",SK,function(k){return ST[k]},function(k){return {q:"#1F8A5B",p:"#B0650B",s:"#B4323A",m:"#B0650B",h:"#5B6372",x:"#8A8F98"}[k]},function(k){return IT.filter(function(e){return e.st===k}).length});
 }
 $("side").addEventListener("change",function(e){var t=e.target;if(!t.dataset.f)return;S.f[t.dataset.f][t.value]=t.checked;save();t.closest(".chk").classList.toggle("off",!t.checked);render()});
 $("side").addEventListener("click",function(e){var b=e.target.closest("[data-all]");if(!b)return;var n=b.dataset.all,f=S.f[n],any=Object.keys(f).some(function(k){return f[k]===false});
@@ -531,7 +535,7 @@ $("kd").addEventListener("click",function(e){var li=e.target.closest("[data-go]"
 /* ----- render ----- */
 function pbadges(e){return '<span class="pf">'+(e.pl||[]).map(function(p){var P=PL[p.k];return '<i class="pb'+(p.off?' off':'')+'" style="--pc:'+P.c+'" title="'+P.n+(p.time?' '+p.time:'')+(p.off?' (planned)':'')+'">'+P.a+'</i>'}).join("")+'</span>'}
 function tcol(e){return (C.types[e.type]||{}).c||"#8088A0"}
-function dayDone(k){var L=byDay[k]||[];return L.length&&L.every(function(e){return e.st==="q"})}
+function dayDone(k){var L=byDay[k]||[];return L.length&&L.every(function(e){return e.st==="q"||e.st==="x"})}
 function render(){
   ["prev","next","today"].forEach(function(id){$(id).hidden=S.view==="ads"});
   document.querySelectorAll("#views button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.view)});
